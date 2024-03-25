@@ -1,9 +1,13 @@
+import IngridientList from './components/IngridientList'
 import PizzaProvider from './components/PizzaProvider'
+import { Ingredients } from './components/PizzaContext'
 
 function App() {
    return (
       <PizzaProvider>
-         <h1>pizza :D</h1>
+         <IngridientList type={Ingredients.sauce} />
+         <IngridientList type={Ingredients.cheese} />
+         <IngridientList type={Ingredients.toppings} />
       </PizzaProvider>
    )
 }
