@@ -1,5 +1,10 @@
 # Pizza Calculator
 ### Group: GYRR å majs
+- Maja Wennstam
+- Anton Håkansson
+- Dennis Flinkfeldt
+- Sebastian Högsander
+- Gustav Syrén 
 
 ---
 ### Description: 
