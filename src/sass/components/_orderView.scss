@@ -1,0 +1,12 @@
+.pizza-size-selection {
+   width: 100%;
+   * {
+      width: 33.335%;
+      height: 39px;
+      background-color: #ffffff;
+      border: 1px solid black;
+   }
+   .current-size {
+      background-color: #6d91ee;
+   }
+}

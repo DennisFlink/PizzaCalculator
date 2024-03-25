@@ -1,9 +1,9 @@
 import PizzaProvider from './components/PizzaProvider'
-
+import OrderView from './components/OrderView'
 function App() {
    return (
       <PizzaProvider>
-         <h1>pizza :D</h1>
+         <OrderView />
       </PizzaProvider>
    )
 }
