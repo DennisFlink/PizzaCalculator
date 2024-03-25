@@ -1,9 +1,10 @@
+import { IngredientsBox } from './components/IngredientsBox'
 import PizzaProvider from './components/PizzaProvider'
 
 function App() {
    return (
       <PizzaProvider>
-         <h1>pizza :D</h1>
+         <IngredientsBox />
       </PizzaProvider>
    )
 }
