@@ -1,8 +1,10 @@
+import PizzaProvider from './components/PizzaProvider'
+
 function App() {
    return (
-      <>
-         <h1>WELCOME</h1>
-      </>
+      <PizzaProvider>
+         <h1>pizza :D</h1>
+      </PizzaProvider>
    )
 }
 
