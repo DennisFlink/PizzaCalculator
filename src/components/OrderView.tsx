@@ -25,7 +25,7 @@ const reducer = (pizzaSize: PizzaSize, action: any) => {
 }
 
 const OrderView = () => {
-   const [pizzaSize, dispatch] = useReducer(reducer, 'medium') // Initial state should be a string
+   const [pizzaSize, dispatch] = useReducer(reducer, 'medium')
    const [activeButton, setActiveButton] = useState('medium')
    const pizza = useContext(PizzaContext)
 
