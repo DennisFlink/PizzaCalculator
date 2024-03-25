@@ -37,7 +37,7 @@ const OrderView = () => {
    return (
       <div className="pizza-size-selection">
          <button
-            className={activeButton === ACTIONS.SMALL ? 'current-size' : 'active'} // Corrected comparison operator
+            className={activeButton === ACTIONS.SMALL ? 'current-size' : 'active'}
             onClick={() => {
                handleSizeChange(ACTIONS.SMALL)
             }}
@@ -45,7 +45,7 @@ const OrderView = () => {
             S
          </button>
          <button
-            className={activeButton === ACTIONS.MEDIUM ? 'current-size' : 'active'} // Corrected comparison operator
+            className={activeButton === ACTIONS.MEDIUM ? 'current-size' : 'active'}
             onClick={() => {
                handleSizeChange(ACTIONS.MEDIUM)
             }}
@@ -53,7 +53,7 @@ const OrderView = () => {
             M
          </button>
          <button
-            className={activeButton === ACTIONS.LARGE ? 'current-size' : 'active'} // Corrected comparison operator
+            className={activeButton === ACTIONS.LARGE ? 'current-size' : 'active'}
             onClick={() => {
                handleSizeChange(ACTIONS.LARGE)
             }}
