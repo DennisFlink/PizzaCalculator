@@ -4,10 +4,10 @@ import { Pizza } from './PizzaContext'
 
 type CartItemProps = {
     item: Pizza;
-    removePizza: () => void;
+    id: number
 };
 
-const CartItem: React.FC<CartItemProps> = ({item, removePizza}) => {
+const CartItem: React.FC<CartItemProps> = ({item,  id}) => {
    const [isActive, setIsActive] = useState(false)
    
    
@@ -17,9 +17,9 @@ const CartItem: React.FC<CartItemProps> = ({item, removePizza}) => {
             <div className="accordion">
                <div className="accordion-item">
                   <div className="accordion-title">
-                    <img src="./assets/close.svg" alt="a cross" onClick={removePizza} />
+                    <img src="./assets/close.svg" alt="a cross"/>
                     <img src="./assets/edit.svg" alt="a pen" />
-                     <div>Pizza: Behöver vi lägga till id på pizzorna? : {item.size}</div>
+                     <div>Pizza: {id + 1} : {item.size}</div>
                      <div>{item.totalCost} kr</div>
                      <div>
                         {isActive ? (<img className='accordion-inactive' onClick={() => setIsActive(!isActive)} src='./assets/arrow.svg' alt='arrow'/>)
