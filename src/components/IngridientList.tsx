@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { PizzaContext, initialPizzaState } from './PizzaContext'
+import { PizzaContext } from './PizzaContext'
 import { ACTION } from './PizzaProvider'
 
 type PROP = {
