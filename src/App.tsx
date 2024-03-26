@@ -14,7 +14,6 @@ function App() {
          <IngredientsBox type="toppings" />
          <CartView/>
       </PizzaProvider>
-      <Button />
       </>
    )
 }
