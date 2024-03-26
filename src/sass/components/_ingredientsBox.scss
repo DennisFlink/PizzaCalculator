@@ -1,40 +1,49 @@
-@use "../abstracts/colors" as colors;
+@use '../abstracts/colors' as colors;
 
-.ingredients-box{
-    margin-bottom: 2rem;
-    .title {
-        display: flex;
-        align-items: flex-end;
-        justify-content: space-between;
-        width: 80%;
-        h2{
-            font-size: 20px;
-            font-weight:600;
-        }
-        p{
-            font-size: 12px;
-            font-weight:normal;
-        }
-        
-    }
+.category-rule {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   font-size: 1.6rem;
+   margin-bottom: 3rem;
+   .category-container {
+      width: 100%;
+      min-height: 1rem;
+      display: flex;
+      justify-content: center;
+      * {
+         transition: 0.1s;
+      }
+      .category-price {
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+         gap: 15rem;
+         border-bottom: 1px solid black;
+         h2 {
+            width: 40vw;
+            font-weight: 600;
+            letter-spacing: 0.4rem;
+         }
+         p {
+            font-weight: 400;
+            letter-spacing: 0.01rem;
+         }
+      }
+   }
+   .rule-arrow {
+      display: flex;
+      flex-direction: row;
+      hr {
+         width: 80vw;
+         height: 1px;
+         align-self: center;
+         background-color: colors.$Secondary;
+         border: none;
+      }
+   }
+}
 
-    .accordian{
-        display: flex;
-        
-        hr{
-            width: 80%;
-            height: 1px;
-            background-color: colors.$Secondary;
-            border: none;
-            align-self: center;
-        }
-  
-        .accordian-inactive {
-            transform:rotate(180deg);
-        }
-    }
-
-   
-
-
+.accordion-inactive {
+   transform: rotate(90deg);
 }

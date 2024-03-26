@@ -1,5 +1,4 @@
 import { useContext, useState } from 'react'
-import '../sass/components/_orderView.scss'
 import { PizzaContext } from './PizzaContext'
 import { ACTION } from './PizzaProvider'
 
@@ -11,7 +10,7 @@ const ACTIONS = {
 
 const OrderView = () => {
    const { state, dispatch } = useContext(PizzaContext)
-   const [activeButton, setActiveButton] = useState(state.pizzas[state.pizzas.length - 1].size)
+   const [activeButton, setActiveButton] = useState('medium')
 
    const handleSizeChange = (size: string) => {
       setActiveButton(size)
@@ -22,7 +21,7 @@ const OrderView = () => {
    return (
       <div className="pizza-size-selection">
          <div className="size-select-container">
-            <p>100 sek</p>
+            <p>100 SEK</p>
             <button
                className={activeButton === ACTIONS.SMALL ? 'current-size' + ' size-select-button' : ' size-select-button'}
                onClick={() => {
@@ -33,7 +32,7 @@ const OrderView = () => {
             </button>
          </div>
          <div className="size-select-container">
-            <p>120 sek</p>
+            <p>120 SEK</p>
             <button
                className={activeButton === ACTIONS.MEDIUM ? 'current-size' + ' size-select-button' : ' size-select-button'}
                onClick={() => {
@@ -44,7 +43,7 @@ const OrderView = () => {
             </button>
          </div>
          <div className="size-select-container">
-            <p>150 sek</p>
+            <p>150 SEK</p>
             <button
                className={activeButton === ACTIONS.LARGE ? 'current-size' + ' size-select-button' : ' size-select-button'}
                onClick={() => {

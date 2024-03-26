@@ -29,20 +29,20 @@ const IngredientsBox = ({ type }: IngredientsBoxProps) => {
 
    const [isActive, setIsActive] = useState(false)
    return (
-      <section className="ingredients-box">
-         <section className="title">
-            <h2>{title}</h2>
-            <p>{price}</p>
-         </section>
-         <section className="accordian">
-            <hr />
-            {/* rotate arrow */}
+      <section className="category-rule">
+         <article className="category-container">
+            <section className="category-price">
+               <h2>{title}</h2>
+               <p>{price} SEK</p>
+            </section>
             {!isActive ? (
-               <img className="accordian-inactive" onClick={() => setIsActive(!isActive)} src="src/assets/arrow.svg" alt="arrow" />
+               <img className="accordion-inactive" onClick={() => setIsActive(!isActive)} src="src/assets/arrow.svg" alt="arrow" />
             ) : (
                <img onClick={() => setIsActive(!isActive)} src="src/assets/arrow.svg" alt="arrow" />
             )}
-         </section>
+         </article>
+
+         <div className="rule-arrow">{/*  <hr /> */}</div>
 
          {isActive && <IngridientList type={ingredients[type]} category={type} />}
       </section>
