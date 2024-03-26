@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .accordion {
+    margin: 0.5rem auto;
+   
+
+    .accordion-title {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 5rem;
+        background-color: #21aeca;
+      }
+
+      .accordion-title,
+      .accordion-content {
+        padding: 1rem;
+      }
+      
+      .accordion-content {
+        background-color: #39b9d2;
+        
+        ul {
+            font-style: bold;
+            margin-top: 1rem;
+        }
+      }
+      
+    .accordion-active {
+        transform:rotate(180deg)
+    }
+  }
+  
+  
+  
+  

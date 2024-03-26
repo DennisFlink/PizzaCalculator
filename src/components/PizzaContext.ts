@@ -1,63 +1,257 @@
 import { createContext } from 'react'
+import { Action } from './PizzaProvider'
+import uuid from 'react-uuid'
 
 type Ingredients = {
-   sauce: { name: string; price: number }[]
-
-   cheese: { name: string; price: number }[]
-
-   toppings: { name: string; price: number }[]
+   sauce: { name: string }[]
+   sacuePrice: number
+   cheese: { name: string }[]
+   cheesePrice: number
+   toppings: { name: string }[]
+   toppingsPrice: number
 }
 
-type Pizza = {
+export type Pizza = {
+   id: string
    size: string
-   Ingridients: Ingredients
+   ingridients: Ingredients
    totalCost: number
 }
 
 export const Ingredients: Ingredients = {
-   sauce: [
-      { name: 'Tomatsås', price: 10 },
-      { name: 'Pesto', price: 10 },
-      { name: 'Créme fraiche', price: 10 },
-      { name: 'Bechamele', price: 10 },
-   ],
-   cheese: [
-      { name: 'Mozarella', price: 15 },
-      { name: 'Parmesan', price: 15 },
-      { name: 'Mögelost', price: 15 },
-      { name: 'Burrata', price: 15 },
-      { name: 'Ricotta', price: 15 },
-      { name: 'Cheddar', price: 15 },
-      { name: 'Pepperjack', price: 15 },
-   ],
+   sauce: [{ name: 'Tomatsås' }, { name: 'Pesto' }, { name: 'Créme fraiche' }, { name: 'Bechamele' }],
+   sacuePrice: 10,
+   cheese: [{ name: 'Mozarella' }, { name: 'Parmesan' }, { name: 'Mögelost' }, { name: 'Burrata' }, { name: 'Ricotta' }, { name: 'Cheddar' }, { name: 'Pepperjack' }],
+   cheesePrice: 15,
 
    toppings: [
-      { name: 'Skinka', price: 20 },
-      { name: 'Champinjoner', price: 20 },
-      { name: 'Ananas', price: 20 },
-      { name: 'Parmaskinka', price: 20 },
-      { name: 'Oxfile', price: 20 },
-      { name: 'Fälskfile', price: 20 },
-      { name: 'Nötkebab', price: 20 },
-      { name: 'Kycklingkebab', price: 20 },
-      { name: 'Fläskkebab', price: 20 },
-      { name: 'Tomat', price: 20 },
-      { name: 'Sallad', price: 20 },
-      { name: 'Gurka', price: 20 },
-      { name: 'Pommes', price: 20 },
-      { name: 'Rödlök', price: 20 },
-      { name: 'Curry', price: 20 },
-      { name: 'Banan', price: 20 },
-      { name: 'Salami', price: 20 },
-      { name: 'Majs', price: 20 },
-      { name: 'Ärtor', price: 20 },
-      { name: 'Dill', price: 20 },
-      { name: 'Sill', price: 20 },
-      { name: 'Lök', price: 20 },
-      { name: 'Rödlök', price: 20 },
+      { name: 'Skinka' },
+      { name: 'Champinjoner' },
+      { name: 'Ananas' },
+      { name: 'Parmaskinka' },
+      { name: 'Oxfile' },
+      { name: 'Fälskfile' },
+      { name: 'Nötkebab' },
+      { name: 'Kycklingkebab' },
+      { name: 'Fläskkebab' },
+      { name: 'Tomat' },
+      { name: 'Sallad' },
+      { name: 'Gurka' },
+      { name: 'Pommes' },
+      { name: 'Rödlök' },
+      { name: 'Curry' },
+      { name: 'Banan' },
+      { name: 'Salami' },
+      { name: 'Majs' },
+      { name: 'Ärtor' },
+      { name: 'Dill' },
+      { name: 'Sill' },
+      { name: 'Lök' },
+      { name: 'Rödlök' },
    ],
+   toppingsPrice: 20,
 }
 
-export const initialPizzaState: Pizza[] = []
+export type PizzaState = {
+   map(arg0: (pizza: Pizza, index: number) => import("react/jsx-runtime").JSX.Element): import("react").ReactNode
+   pizzas: Pizza[]
+}
 
-export const PizzaContext = createContext([] as Pizza[])
+export const initialPizzaState: Pizza[] = [{
+   size: 'Large',
+   ingridients: {
+       sauce: [
+           { name: 'Tomatsås', price: 10 },
+           { name: 'Pesto', price: 10 },
+       ],
+       cheese: [
+           { name: 'Mozarella', price: 15 },
+           { name: 'Parmesan', price: 15 },
+       ],
+       toppings: [
+           { name: 'Skinka', price: 20 },
+           { name: 'Champinjoner', price: 20 },
+           { name: 'Ananas', price: 20 },
+       ],
+   },
+   totalCost: 10 + 15 + 20 + 20 + 20 
+},
+{
+   size: 'Large',
+   ingridients: {
+       sauce: [
+           { name: 'Tomatsås', price: 10 },
+           { name: 'Pesto', price: 10 },
+       ],
+       cheese: [
+           { name: 'Mozarella', price: 15 },
+           { name: 'Parmesan', price: 15 },
+       ],
+       toppings: [
+           { name: 'Skinka', price: 20 },
+           { name: 'Champinjoner', price: 20 },
+           { name: 'Ananas', price: 20 },
+       ],
+   },
+   totalCost: 10 + 15 + 20 + 20 + 20 
+},
+{
+   size: 'Large',
+   ingridients: {
+       sauce: [
+           { name: 'Tomatsås', price: 10 },
+           { name: 'Pesto', price: 10 },
+       ],
+       cheese: [
+           { name: 'Mozarella', price: 15 },
+           { name: 'Parmesan', price: 15 },
+       ],
+       toppings: [
+           { name: 'Skinka', price: 20 },
+           { name: 'Champinjoner', price: 20 },
+           { name: 'Ananas', price: 20 },
+       ],
+   },
+   totalCost: 10 + 15 + 20 + 20 + 20 
+},
+{
+   size: 'Large',
+   ingridients: {
+       sauce: [
+           { name: 'Tomatsås', price: 10 },
+           { name: 'Pesto', price: 10 },
+       ],
+       cheese: [
+           { name: 'Mozarella', price: 15 },
+           { name: 'Parmesan', price: 15 },
+       ],
+       toppings: [
+           { name: 'Skinka', price: 20 },
+           { name: 'Champinjoner', price: 20 },
+           { name: 'Ananas', price: 20 },
+       ],
+   },
+   totalCost: 10 + 15 + 20 + 20 + 20 
+},
+{
+   size: 'Large',
+   ingridients: {
+       sauce: [
+           { name: 'Tomatsås', price: 10 },
+           { name: 'Pesto', price: 10 },
+       ],
+       cheese: [
+           { name: 'Mozarella', price: 15 },
+           { name: 'Parmesan', price: 15 },
+       ],
+       toppings: [
+           { name: 'Skinka', price: 20 },
+           { name: 'Champinjoner', price: 20 },
+           { name: 'Ananas', price: 20 },
+       ],
+   },
+   totalCost: 10 + 15 + 20 + 20 + 20 
+},
+{
+   size: 'Large',
+   ingridients: {
+       sauce: [
+           { name: 'Tomatsås', price: 10 },
+           { name: 'Pesto', price: 10 },
+       ],
+       cheese: [
+           { name: 'Mozarella', price: 15 },
+           { name: 'Parmesan', price: 15 },
+       ],
+       toppings: [
+           { name: 'Skinka', price: 20 },
+           { name: 'Champinjoner', price: 20 },
+           { name: 'Ananas', price: 20 },
+       ],
+   },
+   totalCost: 10 + 15 + 20 + 20 + 20 
+},
+{
+   size: 'Large',
+   ingridients: {
+       sauce: [
+           { name: 'Tomatsås', price: 10 },
+           { name: 'Pesto', price: 10 },
+       ],
+       cheese: [
+           { name: 'Mozarella', price: 15 },
+           { name: 'Parmesan', price: 15 },
+       ],
+       toppings: [
+           { name: 'Skinka', price: 20 },
+           { name: 'Champinjoner', price: 20 },
+           { name: 'Ananas', price: 20 },
+       ],
+   },
+   totalCost: 10 + 15 + 20 + 20 + 20 
+},
+{
+   size: 'Large',
+   ingridients: {
+       sauce: [
+           { name: 'Tomatsås', price: 10 },
+           { name: 'Pesto', price: 10 },
+       ],
+       cheese: [
+           { name: 'Mozarella', price: 15 },
+           { name: 'Parmesan', price: 15 },
+       ],
+       toppings: [
+           { name: 'Skinka', price: 20 },
+           { name: 'Champinjoner', price: 20 },
+           { name: 'Ananas', price: 20 },
+       ],
+   },
+   totalCost: 10 + 15 + 20 + 20 + 20 
+},
+{
+   size: 'Large',
+   ingridients: {
+       sauce: [
+           { name: 'Tomatsås', price: 10 },
+           { name: 'Pesto', price: 10 },
+       ],
+       cheese: [
+           { name: 'Mozarella', price: 15 },
+           { name: 'Parmesan', price: 15 },
+       ],
+       toppings: [
+           { name: 'Skinka', price: 20 },
+           { name: 'Champinjoner', price: 20 },
+           { name: 'Ananas', price: 20 },
+       ],
+   },
+   totalCost: 10 + 15 + 20 + 20 + 20 
+},
+{
+   size: 'Large',
+   ingridients: {
+       sauce: [
+           { name: 'Tomatsås', price: 10 },
+           { name: 'Pesto', price: 10 },
+       ],
+       cheese: [
+           { name: 'Mozarella', price: 15 },
+           { name: 'Parmesan', price: 15 },
+       ],
+       toppings: [
+           { name: 'Skinka', price: 20 },
+           { name: 'Champinjoner', price: 20 },
+           { name: 'Ananas', price: 20 },
+       ],
+   },
+   totalCost: 10 + 15 + 20 + 20 + 20 
+}]
+
+export const PizzaContext = createContext<{
+   state: PizzaState
+   dispatch: React.Dispatch<Action>
+}>({
+   state: initialPizzaState,
+   dispatch: () => null,
+})
