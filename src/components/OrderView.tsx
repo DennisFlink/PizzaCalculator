@@ -15,7 +15,7 @@ const OrderView = () => {
    const handleSizeChange = (size: string) => {
       setActiveButton(size)
       const index = state.pizzas.length - 1
-      dispatch({ type: ACTION.EDIT, payload: { ...state.pizzas[index], size: size } })
+      dispatch({ type: ACTION.EDIT, payload: { ...state.pizzas[index], size: size, setActiveButton } })
    }
 
    return (
