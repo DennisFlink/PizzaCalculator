@@ -1,18 +1,16 @@
 import { createContext } from 'react'
-type Ingredient = {
-   name: string
-   price: number
-}
 
 type Ingredients = {
-   sauce: Ingredient[]
-   cheese: Ingredient[]
-   toppings: Ingredient[]
+   sauce: { name: string; price: number }[]
+
+   cheese: { name: string; price: number }[]
+
+   toppings: { name: string; price: number }[]
 }
 
 type Pizza = {
    size: string
-   ingredients: Ingredients
+   Ingridients: Ingredients
    totalCost: number
 }
 
@@ -60,14 +58,6 @@ export const Ingredients: Ingredients = {
    ],
 }
 
-export const initialPizzaState: Pizza = {
-   size: '',
-   ingredients: {
-      sauce: [],
-      cheese: [],
-      toppings: [],
-   },
-   totalCost: 0,
-}
+export const initialPizzaState: Pizza[] = []
 
-export const PizzaContext = createContext<Pizza>(initialPizzaState)
+export const PizzaContext = createContext([] as Pizza[])
