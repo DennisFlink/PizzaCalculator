@@ -38,7 +38,7 @@ const OrderView = () => {
          <div className="size-select-container">
             <p>100 sek</p>
             <button
-               className={activeButton === ACTIONS.SMALL ? 'current-size' + ' size-select-button' : 'active' + ' size-select-button'}
+               className={activeButton === ACTIONS.SMALL ? 'current-size' + ' size-select-button' : ' size-select-button'}
                onClick={() => {
                   handleSizeChange(ACTIONS.SMALL)
                }}
@@ -49,7 +49,7 @@ const OrderView = () => {
          <div className="size-select-container">
             <p>120 sek</p>
             <button
-               className={activeButton === ACTIONS.MEDIUM ? 'current-size' + ' size-select-button' : 'active' + ' size-select-button'}
+               className={activeButton === ACTIONS.MEDIUM ? 'current-size' + ' size-select-button' : ' size-select-button'}
                onClick={() => {
                   handleSizeChange(ACTIONS.MEDIUM)
                }}
@@ -60,7 +60,7 @@ const OrderView = () => {
          <div className="size-select-container">
             <p>150 sek</p>
             <button
-               className={activeButton === ACTIONS.LARGE ? 'current-size' + ' size-select-button' : 'active' + ' size-select-button'}
+               className={activeButton === ACTIONS.LARGE ? 'current-size' + ' size-select-button' : ' size-select-button'}
                onClick={() => {
                   handleSizeChange(ACTIONS.LARGE)
                }}
