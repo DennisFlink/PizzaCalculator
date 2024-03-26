@@ -1,5 +1,5 @@
 import CartItem from "./CartItem"
- import { useContext,  } from "react"
+ import { useContext } from "react"
 import { Pizza, PizzaContext } from "./PizzaContext" 
 
 const CartView = () => {
@@ -19,3 +19,4 @@ const CartView = () => {
 }
 
 export default CartView
+
