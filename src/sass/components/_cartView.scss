@@ -1,0 +1,18 @@
+.cart-view {
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    
+
+    .cart-item-container {
+        max-height: 40rem;
+        overflow-y: auto;
+    }
+
+  
+    h2 {
+        padding-top: 1rem;
+        margin-bottom: 1rem;
+        font-size: 2rem;
+    }
+}

@@ -62,17 +62,7 @@ export type PizzaState = {
 }
 
 export const initialPizzaState: PizzaState = {
-   pizzas: [
-      {
-         id: uuid(),
-         size: "medium",
-         sauce: [],
-         cheese: [],
-         toppings: [],
-         totalCost: 100
-         
-      }
-   ],
+   pizzas: [{ id: uuid(), size: 'medium', sauce: [], cheese: [], toppings: [], totalCost: 100, done: false }],
 }
 
 export const PizzaContext = createContext<{
