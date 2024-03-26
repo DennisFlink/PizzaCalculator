@@ -1,5 +1,6 @@
 import { useContext, useReducer, useState } from 'react'
 import '../sass/components/_orderView.scss'
+import { PizzaContext } from './PizzaContext'
 
 const ACTIONS = {
    SMALL: 'small',
@@ -25,6 +26,7 @@ const reducer = (pizzaSize: PizzaSize, action: any) => {
 const OrderView = () => {
    const [pizzaSize, dispatch] = useReducer(reducer, 'medium')
    const [activeButton, setActiveButton] = useState('medium')
+   const pizzaData = useContext(PizzaContext)
 
    const handleSizeChange = (size: string) => {
       setActiveButton(size)
