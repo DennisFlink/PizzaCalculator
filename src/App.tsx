@@ -1,10 +1,12 @@
-import { IngredientsBox } from './components/IngredientsBox'
+import IngredientsBox from './components/IngredientsBox'
 import PizzaProvider from './components/PizzaProvider'
 
 function App() {
    return (
       <PizzaProvider>
-         <IngredientsBox />
+         <IngredientsBox type="sauce" />
+         <IngredientsBox type="cheese" />
+         <IngredientsBox type="toppings" />
       </PizzaProvider>
    )
 }
