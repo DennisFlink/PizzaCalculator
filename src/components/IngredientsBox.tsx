@@ -7,7 +7,6 @@ type IngredientsBoxProps = {
 
 const IngredientsBox = ({ type }: IngredientsBoxProps) => {
    const ingredients = Ingredients
-
    const [isActive, setIsActive] = useState(false)
    return (
       <section className="ingredients-box">
