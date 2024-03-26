@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from 'react'
+import { useReducer } from 'react'
 import { Pizza, PizzaContext, PizzaState } from './PizzaContext'
 import { initialPizzaState } from './PizzaContext'
 
