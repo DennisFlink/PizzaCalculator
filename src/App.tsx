@@ -4,7 +4,9 @@ import OrderView from './components/OrderView'
 function App() {
    return (
       <PizzaProvider>
-         <IngredientsBox />
+         <IngredientsBox type="sauce" />
+         <IngredientsBox type="cheese" />
+         <IngredientsBox type="toppings" />
       </PizzaProvider>
    )
 }
