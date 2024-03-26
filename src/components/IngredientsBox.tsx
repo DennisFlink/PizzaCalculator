@@ -8,14 +8,9 @@ type IngredientsBoxProps = {
 const IngredientsBox = ({ type }: IngredientsBoxProps) => {
    const ingredients = Ingredients
 
-   /*  const categories: String[] = Object.keys(ingredients).filter((key) => !key.includes('Price'))
-
-   console.log(categories) */
-
    const [isActive, setIsActive] = useState(false)
    return (
       <section className="ingredients-box">
-         {/* ändra detta till att ta emot från ingridentsContext istället?*/}
          {type === 'sauce' ? (
             <section className="title">
                <h2>SÖS</h2>
