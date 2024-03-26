@@ -1,13 +1,13 @@
-@use "../abstracts/colors" as colors;
+@use '../abstracts/colors' as colors;
 
 html {
-  font-size: 62.5%;
+   font-size: 62.5%;
 }
 body {
-  width: 100%;
-  background-color: colors.$Background;
+   width: 100%;
+   background-color: colors.$Background;
 }
 h1 {
-  text-align: center;
-  font-size: 15rem;
+   text-align: center;
+   font-size: 15rem;
 }
