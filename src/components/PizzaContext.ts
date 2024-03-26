@@ -66,9 +66,13 @@ export const initialPizzaState: PizzaState = {
 }
 
 export const PizzaContext = createContext<{
+   size: string,
+   changeSize: (size:string) => void,
    state: PizzaState
    dispatch: React.Dispatch<Action>
 }>({
+   size: "",
+   changeSize: () => {},
    state: initialPizzaState,
    dispatch: () => null,
 })
