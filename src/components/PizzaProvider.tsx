@@ -1,8 +1,8 @@
-import { useReducer } from 'react'
+import { useEffect, useReducer } from 'react'
 import { Pizza, PizzaContext, PizzaState } from './PizzaContext'
 import { initialPizzaState } from './PizzaContext'
 
-const ACTION = {
+export const ACTION = {
    ADD: 'ADD',
    REMOVE: 'REMOVE',
    EDIT: 'EDIT',
@@ -36,12 +36,14 @@ const pizzaReducer = (state: PizzaState, action: Action): PizzaState => {
          throw new Error('Wrong with action type')
    }
 }
+
 type PizzaProviderProps = {
    children: React.ReactNode
 }
 
 const PizzaProvider = ({ children }: PizzaProviderProps) => {
    const [state, dispatch] = useReducer(pizzaReducer, initialPizzaState)
+   console.log(state)
    return <PizzaContext.Provider value={{ state, dispatch }}>{children}</PizzaContext.Provider>
 }
 
