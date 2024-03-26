@@ -42,8 +42,6 @@ const IngredientsBox = ({ type }: IngredientsBoxProps) => {
             )}
          </article>
 
-         <div className="rule-arrow">{/*  <hr /> */}</div>
-
          {isActive && <IngridientList type={ingredients[type]} category={type} />}
       </section>
    )

@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { PizzaContext } from './PizzaContext'
 import { ACTION } from './PizzaProvider'
 
@@ -12,10 +12,14 @@ const OrderView = () => {
    const { state, dispatch } = useContext(PizzaContext)
    const [activeButton, setActiveButton] = useState(state.pizzas[state.pizzas.length - 1].size)
 
+   useEffect(() => {
+      setActiveButton('medium')
+   }, [state.pizzas.length])
+
    const handleSizeChange = (size: string) => {
       setActiveButton(size)
       const index = state.pizzas.length - 1
-      dispatch({ type: ACTION.EDIT, payload: { ...state.pizzas[index], size: size, setActiveButton } })
+      dispatch({ type: ACTION.EDIT, payload: { ...state.pizzas[index], size: size } })
    }
 
    return (
