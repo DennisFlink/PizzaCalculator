@@ -1,6 +1,6 @@
 import IngredientsBox from './components/IngredientsBox'
 import PizzaProvider from './components/PizzaProvider'
-import { Ingredients } from './components/PizzaContext'
+import CartView from './components/CartView'
 
 function App() {
    return (
@@ -8,6 +8,7 @@ function App() {
          <IngredientsBox type="sauce" />
          <IngredientsBox type="cheese" />
          <IngredientsBox type="toppings" />
+         <CartView/>
       </PizzaProvider>
    )
 }
