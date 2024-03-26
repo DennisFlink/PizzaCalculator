@@ -3,7 +3,6 @@ import { Pizza, PizzaContext, PizzaState } from './PizzaContext'
 import { initialPizzaState } from './PizzaContext'
 
 export const ACTION = {
-export const ACTION = {
    ADD: 'ADD',
    REMOVE: 'REMOVE',
    EDIT: 'EDIT',
