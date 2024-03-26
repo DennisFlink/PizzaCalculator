@@ -1,9 +1,5 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
+@use "../abstracts/colors" as colors;
+
   .accordion {
     margin: 0.5rem auto;
    
@@ -14,7 +10,7 @@
         align-items: center;
         justify-content: center;
         gap: 5rem;
-        background-color: #21aeca;
+        background-color: colors.$Primary;
       }
 
       .accordion-title,
@@ -23,7 +19,7 @@
       }
       
       .accordion-content {
-        background-color: #39b9d2;
+        background-color: colors.$Primary;
         
         ul {
             font-style: bold;
