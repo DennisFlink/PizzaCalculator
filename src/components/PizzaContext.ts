@@ -1,40 +1,27 @@
 import { createContext } from 'react'
-import { Action } from './PizzaProvider';
-import uuid from "react-uuid";
+import { Action } from './PizzaProvider'
+import uuid from 'react-uuid'
 
 type Ingredients = {
-   sauce: { name: string;}[]
-   sacuePrice: number;
-   cheese: { name: string; }[]
-   cheesePrice: number,
-   toppings: { name: string; }[]
+   sauce: { name: string }[]
+   sacuePrice: number
+   cheese: { name: string }[]
+   cheesePrice: number
+   toppings: { name: string }[]
    toppingsPrice: number
 }
 
 export type Pizza = {
-      id: string,
-      size: string,
-      Ingridients: Ingredients,
-      totalCost: number 
+   id: string
+   size: string
+   Ingridients: Ingredients
+   totalCost: number
 }
 
 export const Ingredients: Ingredients = {
-   sauce: [
-      { name: 'Tomatsås' },
-      { name: 'Pesto'},
-      { name: 'Créme fraiche' },
-      { name: 'Bechamele' },
-   ],
-   sacuePrice:10,
-   cheese: [
-      { name: 'Mozarella' },
-      { name: 'Parmesan' },
-      { name: 'Mögelost' },
-      { name: 'Burrata' },
-      { name: 'Ricotta' },
-      { name: 'Cheddar' },
-      { name: 'Pepperjack' },
-   ],
+   sauce: [{ name: 'Tomatsås' }, { name: 'Pesto' }, { name: 'Créme fraiche' }, { name: 'Bechamele' }],
+   sacuePrice: 10,
+   cheese: [{ name: 'Mozarella' }, { name: 'Parmesan' }, { name: 'Mögelost' }, { name: 'Burrata' }, { name: 'Ricotta' }, { name: 'Cheddar' }, { name: 'Pepperjack' }],
    cheesePrice: 15,
 
    toppings: [
@@ -62,7 +49,7 @@ export const Ingredients: Ingredients = {
       { name: 'Lök' },
       { name: 'Rödlök' },
    ],
-   toppingsPrice:20
+   toppingsPrice: 20,
 }
 
 export type PizzaState = {
@@ -70,16 +57,13 @@ export type PizzaState = {
 }
 
 export const initialPizzaState: PizzaState = {
-   pizzas: [] 
+   pizzas: [],
 }
 
-
 export const PizzaContext = createContext<{
-   state: PizzaState;
-   dispatch: React.Dispatch<Action>;
- }>({
+   state: PizzaState
+   dispatch: React.Dispatch<Action>
+}>({
    state: initialPizzaState,
    dispatch: () => null,
- });
-
-
+})
