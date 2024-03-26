@@ -1,6 +1,7 @@
 import { useContext, useReducer, useState } from 'react'
 import '../sass/components/_orderView.scss'
 import { PizzaContext } from './PizzaContext'
+import { ACTION } from './PizzaProvider'
 
 const ACTIONS = {
    SMALL: 'small',
@@ -8,33 +9,14 @@ const ACTIONS = {
    LARGE: 'large',
 }
 
-type PizzaSize = 'small' | 'medium' | 'large'
-
-type Action = {
-   type: string
-}
-
-const reducer = (pizzaSize: PizzaSize, action: Action) => {
-   switch (action.type) {
-      case ACTIONS.SMALL:
-         return 'small'
-      case ACTIONS.MEDIUM:
-         return 'medium'
-      case ACTIONS.LARGE:
-         return 'large'
-      default:
-         return pizzaSize
-   }
-}
-
 const OrderView = () => {
-   const [pizzaSize, dispatch] = useReducer(reducer, 'medium')
+   const { state, dispatch } = useContext(PizzaContext)
    const [activeButton, setActiveButton] = useState('medium')
-   const pizzaData = useContext(PizzaContext)
 
    const handleSizeChange = (size: string) => {
       setActiveButton(size)
-      dispatch({ type: size })
+      const index = state.pizzas.length - 1
+      dispatch({ type: ACTION.EDIT, payload: { ...state.pizzas[index], size: size } })
    }
 
    return (
