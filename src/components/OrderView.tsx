@@ -10,7 +10,11 @@ const ACTIONS = {
 
 type PizzaSize = 'small' | 'medium' | 'large'
 
-const reducer = (pizzaSize: PizzaSize, action: any) => {
+type Action = {
+   type: string
+}
+
+const reducer = (pizzaSize: PizzaSize, action: Action) => {
    switch (action.type) {
       case ACTIONS.SMALL:
          return 'small'
