@@ -1,4 +1,6 @@
-import  { useState } from 'react';
+import  { useState, useContext } from 'react';
+import {PizzaContext} from './PizzaContext';
+import Button from './Button';
 
 
 const Header =() =>{
@@ -7,6 +9,8 @@ const Header =() =>{
    const [cartOpen, setCartOpen] = useState(false);
    console.log(cartOpen);
    const [changeOrder, setChangeOrder] = useState(false);
+
+   /* const pizzaData = useContext(PizzaContext); */
     
         
 
@@ -17,21 +21,21 @@ const Header =() =>{
     {!cartOpen ? (
     <div>
     <h1> Pizzakalkylator</h1>;
-  <button onClick={() => setCartOpen(true)}>
+  <Button  onClick={() => setCartOpen(true)}>
     <img src="" alt="" />
-  </button>
+  </Button> 
     </div>):changeOrder ? ( <div>
-    <h1> Pizzan som det är</h1>;
-  <button onClick={() => setChangeOrder(true)}>
+    {/* <h1> {pizzaData.id} </h1>; */}
+  <Button onClick={() => setChangeOrder(true)}>
     kryss
-  </button>
+  </Button>
     </div>
 
     ):(
     <div>
-        <button onClick={() => setCartOpen(false)}>
+        <Button onClick={() => setCartOpen(false)}>
     <img src="" alt="" />
-  </button>
+  </Button>
     <h1>Pizzakalkylator</h1>;
   
     </div>) }

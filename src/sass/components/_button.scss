@@ -1,0 +1,8 @@
+@use '../abstracts/colors' as color;
+
+button{
+    width: 105px;
+    height: 53px;
+    background-color: color.$Primary;
+    color: color$Secondary;
+}
