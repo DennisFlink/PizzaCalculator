@@ -14,9 +14,14 @@ type Ingredients = {
 export type Pizza = {
    id: string
    size: string
-   Ingridients: Ingredients
-   totalCost: number
+   sauce: string[],
+   cheese: string[],
+   toppings: string[]
+   totalCost: number,
+   [key: string]: any
 }
+
+
 
 export const Ingredients: Ingredients = {
    sauce: [{ name: 'Tomatsås' }, { name: 'Pesto' }, { name: 'Créme fraiche' }, { name: 'Bechamele' }],
@@ -57,7 +62,17 @@ export type PizzaState = {
 }
 
 export const initialPizzaState: PizzaState = {
-   pizzas: [],
+   pizzas: [
+      {
+         id: uuid(),
+         size: "medium",
+         sauce: [],
+         cheese: [],
+         toppings: [],
+         totalCost: 100
+         
+      }
+   ],
 }
 
 export const PizzaContext = createContext<{

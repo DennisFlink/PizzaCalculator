@@ -1,32 +1,39 @@
 import { useState } from 'react'
 import { Ingredients } from './PizzaContext'
-
+import IngridientList from './IngridientList'
 type IngredientsBoxProps = {
    type: string
 }
 
 const IngredientsBox = ({ type }: IngredientsBoxProps) => {
    const ingredients = Ingredients
+   let title = ''
+   let price = ' '
+
+   switch (type) {
+      case 'sauce':
+         title = 'SÖS'
+         price = ingredients.sacuePrice.toString()
+         break
+      case 'cheese':
+         title = 'OST'
+         price = ingredients.cheesePrice.toString()
+         break
+      case 'toppings':
+         title = 'TOPPINGS'
+         price = ingredients.toppingsPrice.toString()
+         break
+      default:
+         throw new Error('Wrong with inputs')
+   }
+
    const [isActive, setIsActive] = useState(false)
    return (
       <section className="ingredients-box">
-         {type === 'sauce' ? (
-            <section className="title">
-               <h2>SÖS</h2>
-               <p>{ingredients.sacuePrice} SEK</p>
-            </section>
-         ) : type === 'cheese' ? (
-            <section className="title">
-               <h2>OST</h2>
-               <p>{ingredients.cheesePrice} SEK</p>
-            </section>
-         ) : type === 'toppings' ? (
-            <section className="title">
-               <h2>Toppings</h2>
-               <p>{ingredients.toppingsPrice} SEK</p>
-            </section>
-         ) : null}
-
+         <section className="title">
+            <h2>{title}</h2>
+            <p>{price}</p>
+         </section>
          <section className="accordian">
             <hr />
             {/* rotate arrow */}
@@ -37,17 +44,7 @@ const IngredientsBox = ({ type }: IngredientsBoxProps) => {
             )}
          </section>
 
-         {isActive && (
-            <section>
-               <ul>
-                  <li>test</li>
-                  <li>test</li>
-                  <li>test</li>
-                  <li>test</li>
-                  <li>test</li>
-               </ul>
-            </section>
-         )}
+         {isActive && <IngridientList type={ingredients[type]} category={type} />}
       </section>
    )
 }

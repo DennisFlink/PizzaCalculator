@@ -2,7 +2,7 @@ import { useReducer } from 'react'
 import { Pizza, PizzaContext, PizzaState } from './PizzaContext'
 import { initialPizzaState } from './PizzaContext'
 
-const ACTION = {
+export const ACTION = {
    ADD: 'ADD',
    REMOVE: 'REMOVE',
    EDIT: 'EDIT',
@@ -42,6 +42,7 @@ type PizzaProviderProps = {
 
 const PizzaProvider = ({ children }: PizzaProviderProps) => {
    const [state, dispatch] = useReducer(pizzaReducer, initialPizzaState)
+   console.log(state.pizzas)
    return <PizzaContext.Provider value={{ state, dispatch }}>{children}</PizzaContext.Provider>
 }
 
