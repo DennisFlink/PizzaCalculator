@@ -27,33 +27,9 @@ const IngredientsBox = ({ type }: IngredientsBoxProps) => {
          throw new Error('Wrong with inputs')
    }
 
-   let title = ''
-   let price = ' '
-
-   switch (type) {
-      case 'sauce':
-         title = 'SÖS'
-         price = ingredients.sacuePrice.toString()
-         break
-      case 'cheese':
-         title = 'OST'
-         price = ingredients.cheesePrice.toString()
-         break
-      case 'toppings':
-         title = 'TOPPINGS'
-         price = ingredients.toppingsPrice.toString()
-         break
-      default:
-         throw new Error('Wrong with inputs')
-   }
-
    const [isActive, setIsActive] = useState(false)
    return (
       <section className="ingredients-box">
-         <section className="title">
-            <h2>{title}</h2>
-            <p>{price}</p>
-         </section>
          <section className="title">
             <h2>{title}</h2>
             <p>{price}</p>
@@ -68,7 +44,6 @@ const IngredientsBox = ({ type }: IngredientsBoxProps) => {
             )}
          </section>
 
-         {isActive && <IngridientList type={ingredients[type]} category={type} />}
          {isActive && <IngridientList type={ingredients[type]} category={type} />}
       </section>
    )
