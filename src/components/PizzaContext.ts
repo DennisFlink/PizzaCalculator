@@ -20,6 +20,7 @@ export type Pizza = {
    totalCost: number,
    // eslint-disable-next-line @typescript-eslint/no-explicit-any
    [key: string]: any;
+   done: boolean;
 }
 
 export const Ingredients: Ingredients = {
@@ -57,12 +58,11 @@ export const Ingredients: Ingredients = {
 }
 
 export type PizzaState = {
-   map(arg0: (pizza: Pizza, index: number) => import("react/jsx-runtime").JSX.Element): import("react").ReactNode
    pizzas: Pizza[]
 }
 
 export const initialPizzaState: PizzaState = {
-   pizzas: [{ id: uuid(), size: 'medium', sauce: [], cheese: [], toppings: [], totalCost: 100 }],
+   pizzas: [{ id: uuid(), size: 'medium', sauce: [], cheese: [], toppings: [], totalCost: 100, done: false }],
 }
 
 export const PizzaContext = createContext<{

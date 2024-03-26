@@ -1,5 +1,6 @@
-import { useState, } from 'react'
-import { Pizza } from './PizzaContext'
+import { useState, useContext } from 'react'
+import { Pizza, PizzaContext } from './PizzaContext'
+import { ACTION } from './PizzaProvider';
 
 
 type CartItemProps = {
@@ -7,9 +8,9 @@ type CartItemProps = {
     id: number
 };
 
-const CartItem: React.FC<CartItemProps> = ({item,  id}) => {
+const CartItem: React.FC<CartItemProps> = ({item, id}) => {
    const [isActive, setIsActive] = useState(false)
-   
+   const pizzaData = useContext(PizzaContext)
    
  
    return (
@@ -17,7 +18,7 @@ const CartItem: React.FC<CartItemProps> = ({item,  id}) => {
             <div className="accordion">
                <div className="accordion-item">
                   <div className="accordion-title">
-                    <img src="./assets/close.svg" alt="a cross"/>
+                    <img src="./assets/close.svg" alt="a cross" onClick={() => pizzaData.dispatch({type: ACTION.REMOVE, payload: item })}/>
                     <img src="./assets/edit.svg" alt="a pen" />
                      <div>Pizza: {id + 1} : {item.size}</div>
                      <div>{item.totalCost} kr</div>
@@ -30,20 +31,20 @@ const CartItem: React.FC<CartItemProps> = ({item,  id}) => {
                   {isActive && <div className="accordion-content">
                     <ul>
                         Sås:
-                        {item.ingridients.sauce.map((sauce, index) => (
-                            <li key={index}>{sauce.name}</li>
+                        {item.sauce.map((sauce, index) => (
+                            <li key={index}>{sauce}</li>
                         ))}
                     </ul>
                     <ul>
                         Ost:
-                        {item.ingridients.cheese.map((cheese, index) => (
-                            <li key={index}>{cheese.name}</li>
+                        {item.cheese.map((cheese, index) => (
+                            <li key={index}>{cheese}</li>
                         ))}
                     </ul>
                     <ul>
                         Topping:
-                        {item.ingridients.toppings.map((toppings, index) => (
-                            <li key={index}>{toppings.name}</li>
+                        {item.toppings.map((toppings, index) => (
+                            <li key={index}>{toppings}</li>
                         ))}
                     </ul>
                 </div>}

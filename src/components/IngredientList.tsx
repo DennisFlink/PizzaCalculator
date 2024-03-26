@@ -34,7 +34,10 @@ const IngridientList: React.FC<PROP> = ({ type, category }) => {
    
    }
    const handleButtonClick = () => {
-      dispatch({ type: ACTION.ADD, payload: { id: uuid(), size: 'medium', sauce: [], cheese: [], toppings: [], totalCost: 100 } })
+      const index = state.pizzas.length - 1
+      const currentPizza = state.pizzas[index];
+      dispatch({ type: ACTION.EDIT, payload: { ...currentPizza, done: true }})
+      dispatch({ type: ACTION.ADD, payload: { id: uuid(), size: 'medium', sauce: [], cheese: [], toppings: [], totalCost: 100, done: false } })
    }
 
    return (
