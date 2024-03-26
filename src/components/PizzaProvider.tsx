@@ -43,7 +43,7 @@ type PizzaProviderProps = {
 
 const PizzaProvider = ({ children }: PizzaProviderProps) => {
    const [state, dispatch] = useReducer(pizzaReducer, initialPizzaState)
-   console.log(state)
+   console.log(state, state.pizzas[0].size)
    return <PizzaContext.Provider value={{ state, dispatch }}>{children}</PizzaContext.Provider>
 }
 
