@@ -53,6 +53,7 @@ export const Ingredients: Ingredients = {
 }
 
 export type PizzaState = {
+   map(arg0: (pizza: Pizza, index: number) => import("react/jsx-runtime").JSX.Element): import("react").ReactNode
    pizzas: Pizza[]
 }
 
