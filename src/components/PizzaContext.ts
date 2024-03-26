@@ -12,12 +12,15 @@ type Ingredients = {
 }
 
 export type Pizza = {
-   id: string
-   size: string
-   sauce: string[]
-   chees: string[]
-   toppings: string[]
-   totalCost: number
+   id: string,
+   size: string,
+   sauce: string[],
+   cheese: string[],
+   toppings: string[],
+   totalCost: number,
+   // eslint-disable-next-line @typescript-eslint/no-explicit-any
+   [key: string]: any;
+   done: boolean;
 }
 
 export const Ingredients: Ingredients = {
@@ -59,7 +62,7 @@ export type PizzaState = {
 }
 
 export const initialPizzaState: PizzaState = {
-   pizzas: [{ id: uuid(), size: 'medium', sauce: [], chees: [], toppings: [], totalCost: 100 }],
+   pizzas: [{ id: uuid(), size: 'medium', sauce: [], cheese: [], toppings: [], totalCost: 100, done: false }],
 }
 
 export const PizzaContext = createContext<{

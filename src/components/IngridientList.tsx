@@ -13,7 +13,7 @@ const IngridientList: React.FC<PROP> = ({ type }) => {
       const index = state.pizzas.length - 1
       const currentPizza = state.pizzas[index]
 
-      return currentPizza.chees.some((c) => c === ingredientsName) || currentPizza.sauce.some((s) => s === ingredientsName) || currentPizza.toppings.some((t) => t === ingredientsName)
+      return currentPizza.chees.some((c: string) => c === ingredientsName) || currentPizza.sauce.some((s) => s === ingredientsName) || currentPizza.toppings.some((t) => t === ingredientsName)
    }
 
    const handleCheckboxChange = (ingredient: { name: string }, isChecked: boolean) => {

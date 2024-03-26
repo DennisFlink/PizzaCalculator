@@ -11,7 +11,7 @@ const ACTIONS = {
 
 const OrderView = () => {
    const { state, dispatch } = useContext(PizzaContext)
-   const [activeButton, setActiveButton] = useState('medium')
+   const [activeButton, setActiveButton] = useState(state.pizzas[state.pizzas.length - 1].size)
 
    const handleSizeChange = (size: string) => {
       setActiveButton(size)

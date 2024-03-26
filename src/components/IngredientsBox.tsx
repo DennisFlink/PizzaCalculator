@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Ingredients } from './PizzaContext'
-import IngridientList from './IngridientList'
+import IngridientList from './IngredientList'
 type IngredientsBoxProps = {
    type: string
 }
@@ -44,7 +44,7 @@ const IngredientsBox = ({ type }: IngredientsBoxProps) => {
             )}
          </section>
 
-         {isActive && <IngridientList type={ingredients[type]} />}
+         {isActive && <IngridientList type={ingredients[type]} category={type} />}
       </section>
    )
 }
