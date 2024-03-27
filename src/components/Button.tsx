@@ -1,26 +1,19 @@
-import  { useState, useReducer } from 'react';
+import PropTypes from 'prop-types';
 
-const Button = () => {
+const Button=(props:any)=>{
  
-
   return (
-    <>
-   {cartOpen ?(
-    <div>
-    <button className= "buy">Beställ</button>
-    </div>
-   ): changeOrder ?(
-    <div>
-    <button className="update">Uppdatera</button>
-    </div>
-   ): 
-   <div>
-    <button className="add"> Lägg till</button> 
-    </div>
+    <button className = {props.className} onClick = {props.onClick} >
+      {props.buttonText}
 
-  }
-  </>
+    </button>
+  
   );
-};    
-
+}
+Button.proptypes={
+  buttonText: PropTypes.string,
+  className: PropTypes.string.isRequired,
+  onclick: PropTypes.func.isRequired,
+  
+}
 export default Button;

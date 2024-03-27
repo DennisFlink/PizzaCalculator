@@ -1,4 +1,6 @@
-import  { useState } from 'react';
+import  { useState, useContext } from 'react';
+import {PizzaContext} from './PizzaContext';
+import Button from './Button';
 
 
 const Header =() =>{
@@ -7,6 +9,8 @@ const Header =() =>{
    const [cartOpen, setCartOpen] = useState(false);
    console.log(cartOpen);
    const [changeOrder, setChangeOrder] = useState(false);
+
+   /* const pizzaData = useContext(PizzaContext); */
     
         
 
@@ -15,27 +19,28 @@ const Header =() =>{
     
     <>
     {!cartOpen ? (
-    <div>
-    <h1> Pizzakalkylator</h1>;
-  <button onClick={() => setCartOpen(true)}>
-    <img src="" alt="" />
-  </button>
-    </div>):changeOrder ? ( <div>
-    <h1> Pizzan som det är</h1>;
-  <button onClick={() => setChangeOrder(true)}>
-    kryss
-  </button>
+    <div className="headerDefault">
+        <h1> Pizzakalkylator</h1>;
+            <div className="btnDefault-container">
+                <Button className="closeBtn" onClick={() => setCartOpen(true)} /> 
+            </div>
+    </div>)
+    :changeOrder ? ( 
+    <div className="headerChange">
+    {/* <h1> {pizzaData.id} </h1>; */}
+        <div className="btnChange-container">
+            <Button className="closeBtn" onClick={() => setChangeOrder(true)}/>
+        </div>
     </div>
 
     ):(
-    <div>
-        <button onClick={() => setCartOpen(false)}>
-    <img src="" alt="" />
-  </button>
-    <h1>Pizzakalkylator</h1>;
-  
+    <div className="headerCart">
+        <div className="btnCart-container">
+            <Button className="cartBtn" onClick={() => setCartOpen(false)}/>
+        </div>
+        <h1>Pizzakalkylator</h1>
     </div>) }
-    </>);
+    </>)
     
 };
     
