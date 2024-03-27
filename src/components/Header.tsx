@@ -3,19 +3,11 @@ import Button from './Button';
 
 
 const Header =() =>{
-
-
    const [cartOpen, setCartOpen] = useState(false);
    console.log(cartOpen);
    const [changeOrder, setChangeOrder] = useState(false);
 
-   /* const pizzaData = useContext(PizzaContext); */
-    
-        
-
-    
     return (
-    
     <>
     {!cartOpen ? (
     <div className="headerDefault">
@@ -26,7 +18,6 @@ const Header =() =>{
     </div>)
     :changeOrder ? ( 
     <div className="headerChange">
-    {/* <h1> {pizzaData.id} </h1>; */}
         <div className="btnChange-container">
             <Button className="button close" label='' onClick={() => setChangeOrder(true)}/>
         </div>
@@ -40,7 +31,6 @@ const Header =() =>{
         <h1>Pizzakalkylator</h1>
     </div>) }
     </>)
-    
 };
     
 
