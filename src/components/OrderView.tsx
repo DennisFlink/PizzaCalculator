@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 import '../sass/components/_orderView.scss'
 import { PizzaContext } from './PizzaContext'
 import { ACTION } from './PizzaProvider'
@@ -10,13 +10,18 @@ const ACTIONS = {
 }
 
 const OrderView = () => {
-   const { state, dispatch } = useContext(PizzaContext)
-   const [activeButton, setActiveButton] = useState(state.pizzas[state.pizzas.length - 1].size)
-
-   const handleSizeChange = (size: string) => {
-      setActiveButton(size)
-      const index = state.pizzas.length - 1
-      dispatch({ type: ACTION.EDIT, payload: { ...state.pizzas[index], size: size } })
+   const { editMode, size, changeSize, state, dispatch } = useContext(PizzaContext)
+   /* const [activeButton, setActiveButton] = useState(state.pizzas[state.pizzas.length - 1].size) */
+   const handleSizeChange = (newSize: string) => {
+      changeSize(newSize)
+      let index: number
+      if (editMode.editMode) {
+         index = state.pizzas.findIndex((p) => p.id === editMode.id)
+      } else {
+         index = state.pizzas.length - 1
+      }
+      const currentPizza = state.pizzas[index]
+      dispatch({ type: ACTION.EDIT, payload: { ...currentPizza, size: newSize } })
    }
 
    return (
@@ -24,7 +29,7 @@ const OrderView = () => {
          <div className="size-select-container">
             <p>100 sek</p>
             <button
-               className={activeButton === ACTIONS.SMALL ? 'current-size' + ' size-select-button' : ' size-select-button'}
+               className={size === ACTIONS.SMALL ? 'current-size' + ' size-select-button' : ' size-select-button'}
                onClick={() => {
                   handleSizeChange(ACTIONS.SMALL)
                }}
@@ -35,7 +40,7 @@ const OrderView = () => {
          <div className="size-select-container">
             <p>120 sek</p>
             <button
-               className={activeButton === ACTIONS.MEDIUM ? 'current-size' + ' size-select-button' : ' size-select-button'}
+               className={size === ACTIONS.MEDIUM ? 'current-size' + ' size-select-button' : ' size-select-button'}
                onClick={() => {
                   handleSizeChange(ACTIONS.MEDIUM)
                }}
@@ -46,7 +51,7 @@ const OrderView = () => {
          <div className="size-select-container">
             <p>150 sek</p>
             <button
-               className={activeButton === ACTIONS.LARGE ? 'current-size' + ' size-select-button' : ' size-select-button'}
+               className={size === ACTIONS.LARGE ? 'current-size' + ' size-select-button' : ' size-select-button'}
                onClick={() => {
                   handleSizeChange(ACTIONS.LARGE)
                }}

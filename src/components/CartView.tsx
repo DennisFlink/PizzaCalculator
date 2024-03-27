@@ -11,8 +11,8 @@ const CartView = () => {
          <div className="cart-item-container">
             {pizzaData.state.pizzas
                .filter((pizza) => pizza.done === true)
-               .map((pizza: Pizza, index: number) => (
-                  <CartItem key={index} id={index} item={pizza} />
+               .map((pizza: Pizza) => (
+                  <CartItem key={pizza.id} id={pizza.id} />
                ))}
          </div>
       </div>

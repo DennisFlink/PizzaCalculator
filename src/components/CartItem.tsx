@@ -1,55 +1,65 @@
 import { useState, useContext } from 'react'
-import { Pizza, PizzaContext } from './PizzaContext'
-import { ACTION } from './PizzaProvider';
-
+import { PizzaContext } from './PizzaContext'
+import { ACTION } from './PizzaProvider'
 
 type CartItemProps = {
-    item: Pizza;
-    id: number
-};
+   id: string
+}
 
-const CartItem: React.FC<CartItemProps> = ({item, id}) => {
+const CartItem: React.FC<CartItemProps> = ({ id }) => {
    const [isActive, setIsActive] = useState(false)
-   const pizzaData = useContext(PizzaContext)
-   
- 
+   const { changeEditMode, changeSize, state, dispatch } = useContext(PizzaContext)
+   const [currentPizza] = state.pizzas.filter((p) => p.id === id)
+   const pizzaNumber = state.pizzas.findIndex((p) => p.id === id) + 1
    return (
       <div className="cart-item">
-            <div className="accordion">
-               <div className="accordion-item">
-                  <div className="accordion-title">
-                    <img src="./assets/close.svg" alt="a cross" onClick={() => pizzaData.dispatch({type: ACTION.REMOVE, payload: item })}/>
-                    <img src="./assets/edit.svg" alt="a pen" />
-                     <div>Pizza: {id + 1} : {item.size}</div>
-                     <div>{item.totalCost} kr</div>
-                     <div>
-                        {isActive ? (<img className='accordion-inactive' onClick={() => setIsActive(!isActive)} src='./assets/arrow.svg' alt='arrow'/>)
-                            : (<img className='accordion-active' onClick={() => setIsActive(!isActive)} src='./assets/arrow.svg' alt='a arrow'/>)
-                        }
-                    </div>
+         <div className="accordion">
+            <div className="accordion-item">
+               <div className="accordion-title">
+                  <img src="./assets/close.svg" alt="a cross" onClick={() => dispatch({ type: ACTION.REMOVE, payload: currentPizza })} />
+                  <img
+                     src="./assets/edit.svg"
+                     alt="a pen"
+                     onClick={() => {
+                        changeEditMode(true, id), changeSize(currentPizza.size)
+                     }}
+                  />
+                  <div>
+                     Pizza: {pizzaNumber} : {currentPizza.size}
                   </div>
-                  {isActive && <div className="accordion-content">
-                    <ul>
-                        Sås:
-                        {item.sauce.map((sauce, index) => (
-                            <li key={index}>{sauce}</li>
-                        ))}
-                    </ul>
-                    <ul>
-                        Ost:
-                        {item.cheese.map((cheese, index) => (
-                            <li key={index}>{cheese}</li>
-                        ))}
-                    </ul>
-                    <ul>
-                        Topping:
-                        {item.toppings.map((toppings, index) => (
-                            <li key={index}>{toppings}</li>
-                        ))}
-                    </ul>
-                </div>}
+                  <div>{currentPizza.totalCost} kr</div>
+                  <div>
+                     {isActive ? (
+                        <img className="accordion-inactive" onClick={() => setIsActive(!isActive)} src="./assets/arrow.svg" alt="arrow" />
+                     ) : (
+                        <img className="accordion-active" onClick={() => setIsActive(!isActive)} src="./assets/arrow.svg" alt="a arrow" />
+                     )}
+                  </div>
                </div>
+               {isActive && (
+                  <div className="accordion-content">
+                     <ul>
+                        Sås:
+                        {currentPizza.sauce.map((sauce, index) => (
+                           <li key={index}>{sauce}</li>
+                        ))}
+                     </ul>
+                     <ul>
+                        Ost:
+                        {currentPizza.cheese.map((cheese, index) => (
+                           <li key={index}>{cheese}</li>
+                        ))}
+                     </ul>
+                     <ul>
+                        Topping:
+                        {currentPizza.toppings.map((toppings, index) => (
+                           <li key={index}>{toppings}</li>
+                        ))}
+                     </ul>
+                  </div>
+               )}
             </div>
+         </div>
       </div>
    )
 }

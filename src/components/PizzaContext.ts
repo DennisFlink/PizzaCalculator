@@ -12,15 +12,18 @@ type Ingredients = {
 }
 
 export type Pizza = {
-   id: string,
-   size: string,
+   id: string
+   size: string
    sauce: string[],
    cheese: string[],
-   toppings: string[],
+   toppings: string[]
    totalCost: number,
-   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-   [key: string]: any;
-   done: boolean;
+   [key: string]: any
+}
+
+export type EditModeType = {
+   editMode: boolean,
+   id: string
 }
 
 export const Ingredients: Ingredients = {
@@ -57,6 +60,11 @@ export const Ingredients: Ingredients = {
    toppingsPrice: 20,
 }
 
+const inititalEditModeState: EditModeType = {
+   editMode: false,
+   id: ""
+}
+
 export type PizzaState = {
    pizzas: Pizza[]
 }
@@ -66,9 +74,17 @@ export const initialPizzaState: PizzaState = {
 }
 
 export const PizzaContext = createContext<{
+   editMode: EditModeType,
+   changeEditMode: (editMode:boolean,id:string) => void,
+   size: string,
+   changeSize: (size:string) => void,
    state: PizzaState
    dispatch: React.Dispatch<Action>
 }>({
+   editMode: inititalEditModeState,
+   changeEditMode: () => {},
+   size: "medium",
+   changeSize: () => {},
    state: initialPizzaState,
    dispatch: () => null,
 })
