@@ -21,7 +21,10 @@ export type Pizza = {
    [key: string]: any
 }
 
-
+export type EditModeType = {
+   editMode: boolean,
+   id: string
+}
 
 export const Ingredients: Ingredients = {
    sauce: [{ name: 'Tomatsås' }, { name: 'Pesto' }, { name: 'Créme fraiche' }, { name: 'Bechamele' }],
@@ -57,6 +60,11 @@ export const Ingredients: Ingredients = {
    toppingsPrice: 20,
 }
 
+const inititalEditModeState: EditModeType = {
+   editMode: false,
+   id: ""
+}
+
 export type PizzaState = {
    pizzas: Pizza[]
 }
@@ -66,12 +74,16 @@ export const initialPizzaState: PizzaState = {
 }
 
 export const PizzaContext = createContext<{
+   editMode: EditModeType,
+   changeEditMode: (editMode:boolean,id:string) => void,
    size: string,
    changeSize: (size:string) => void,
    state: PizzaState
    dispatch: React.Dispatch<Action>
 }>({
-   size: "",
+   editMode: inititalEditModeState,
+   changeEditMode: () => {},
+   size: "medium",
    changeSize: () => {},
    state: initialPizzaState,
    dispatch: () => null,

@@ -1,5 +1,5 @@
 import { useReducer, useState } from 'react'
-import { Pizza, PizzaContext, PizzaState } from './PizzaContext'
+import { EditModeType, Pizza, PizzaContext, PizzaState } from './PizzaContext'
 import { initialPizzaState } from './PizzaContext'
 
 export const ACTION = {
@@ -44,12 +44,21 @@ type PizzaProviderProps = {
 const PizzaProvider = ({ children }: PizzaProviderProps) => {
    const [state, dispatch] = useReducer(pizzaReducer, initialPizzaState)
    const [size, setSize] = useState('medium')
-
+   const [editMode, setEditMode] = useState<EditModeType>({
+      editMode: false,
+      id: '',
+   })
    const changeSize = (size: string) => {
       setSize(size)
    }
+   const changeEditMode = (edit: boolean, id: string) => {
+      setEditMode({
+         editMode: edit,
+         id: id,
+      })
+   }
    console.log(state)
-   return <PizzaContext.Provider value={{ size, changeSize, state, dispatch }}>{children}</PizzaContext.Provider>
+   return <PizzaContext.Provider value={{ editMode, changeEditMode, size, changeSize, state, dispatch }}>{children}</PizzaContext.Provider>
 }
 
 export default PizzaProvider
