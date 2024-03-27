@@ -19,27 +19,28 @@ const Header =() =>{
     
     <>
     {!cartOpen ? (
-    <div>
-    <h1> Pizzakalkylator</h1>;
-  <Button  onClick={() => setCartOpen(true)}>
-    <img src="" alt="" />
-  </Button> 
-    </div>):changeOrder ? ( <div>
+    <div className="headerDefault">
+        <h1> Pizzakalkylator</h1>;
+            <div className="btnDefault-container">
+                <Button className="closeBtn" onClick={() => setCartOpen(true)} /> 
+            </div>
+    </div>)
+    :changeOrder ? ( 
+    <div className="headerChange">
     {/* <h1> {pizzaData.id} </h1>; */}
-  <Button onClick={() => setChangeOrder(true)}>
-    kryss
-  </Button>
+        <div className="btnChange-container">
+            <Button className="closeBtn" onClick={() => setChangeOrder(true)}/>
+        </div>
     </div>
 
     ):(
-    <div>
-        <Button onClick={() => setCartOpen(false)}>
-    <img src="" alt="" />
-  </Button>
-    <h1>Pizzakalkylator</h1>;
-  
+    <div className="headerCart">
+        <div className="btnCart-container">
+            <Button className="cartBtn" onClick={() => setCartOpen(false)}/>
+        </div>
+        <h1>Pizzakalkylator</h1>
     </div>) }
-    </>);
+    </>)
     
 };
     
