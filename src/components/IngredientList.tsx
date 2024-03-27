@@ -42,7 +42,7 @@ const IngridientList: React.FC<PROP> = ({ type, category }) => {
    }
 
    return (
-      <div className="CONTAINER">
+      <div className="ingredient-list-container">
          {type.map((ingredient, index) => (
             <div className="box" key={index}>
                <input type="checkbox" checked={checkIfExists(ingredient.name)} id={ingredient.name} onChange={(e) => handleCheckboxChange(ingredient, e.target.checked)}></input>
