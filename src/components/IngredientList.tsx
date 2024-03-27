@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { Pizza, PizzaContext } from './PizzaContext'
+import { PizzaContext } from './PizzaContext'
 import { ACTION } from './PizzaProvider'
 import uuid from 'react-uuid'
 
@@ -9,7 +9,7 @@ type PROP = {
 }
 
 const IngridientList: React.FC<PROP> = ({ type, category }) => {
-   const { editMode, changeEditMode, changeSize, state, dispatch } = useContext(PizzaContext)
+   const { editMode, changeEditMode, changeSize, setCurrentPizza, dispatch } = useContext(PizzaContext)
 
    const checkIfExists = (ingredientsName: string): boolean => {
  
@@ -40,15 +40,7 @@ const IngridientList: React.FC<PROP> = ({ type, category }) => {
       }
    }
 
-   const setCurrentPizza = (): Pizza => {
-      let index: number
-      if (editMode.editMode) {
-         index = state.pizzas.findIndex((p) => p.id === editMode.id)
-      } else {
-         index = state.pizzas.length - 1
-      }
-      return state.pizzas[index]
-   }
+  
 
    return (
       <div className="CONTAINER">
