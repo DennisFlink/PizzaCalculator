@@ -1,5 +1,4 @@
-import  { useState, useContext } from 'react';
-import {PizzaContext} from './PizzaContext';
+import  { useState } from 'react';
 import Button from './Button';
 
 
@@ -22,21 +21,21 @@ const Header =() =>{
     <div className="headerDefault">
         <h1> Pizzakalkylator</h1>;
             <div className="btnDefault-container">
-                <Button className="closeBtn" onClick={() => setCartOpen(true)} /> 
+                <Button className="button close" label={''} onClick={() => setCartOpen(true)} /> 
             </div>
     </div>)
     :changeOrder ? ( 
     <div className="headerChange">
     {/* <h1> {pizzaData.id} </h1>; */}
         <div className="btnChange-container">
-            <Button className="closeBtn" onClick={() => setChangeOrder(true)}/>
+            <Button className="button close" label={''} onClick={() => setChangeOrder(true)}/>
         </div>
     </div>
 
     ):(
     <div className="headerCart">
         <div className="btnCart-container">
-            <Button className="cartBtn" onClick={() => setCartOpen(false)}/>
+            <Button className="button cart" label={''} onClick={() => setCartOpen(false)}/>
         </div>
         <h1>Pizzakalkylator</h1>
     </div>) }
