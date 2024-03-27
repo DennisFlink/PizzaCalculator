@@ -1,36 +1,39 @@
-import  { useState } from 'react';
+import  { useContext, useState } from 'react';
 import Button from './Button';
+import { PizzaContext } from './PizzaContext';
+type HeaderProp = {
+    onChangeOrderView: (bool: boolean) => void;
+}
 
-
-const Header =() =>{
+const Header =({onChangeOrderView} : HeaderProp) =>{
    const [cartOpen, setCartOpen] = useState(false);
    console.log(cartOpen);
-   const [changeOrder, setChangeOrder] = useState(false);
+    const {state,editMode} = useContext(PizzaContext);
 
+    const pizzaNumber = state.pizzas.findIndex((p) => p.id === editMode.id) + 1
+    
     return (
-    <>
-    {cartOpen ? (
-    <div className="headerDefault">
-        <h1> Pizzakalkylator</h1>;
-            <div className="btnDefault-container">
-                <Button className="button close" label='' onClick={() => setCartOpen(true)} />
+    <header>
+    {cartOpen && !editMode.editMode ? (
+        <>
+            <div className="btnChange-container">
+            <Button className="button close" label='' onClick={() =>  {onChangeOrderView(true),setCartOpen(false)}}/>
             </div>
-    </div>)
-    :changeOrder ? ( 
-    <div className="headerChange">
-        <div className="btnChange-container">
-            <Button className="button close" label='' onClick={() => setChangeOrder(true)}/>
-        </div>
-    </div>
-
+            <h1>Pizzakalkylator</h1> 
+        </>
+  ):editMode.editMode ? (     
+        <h1>Pizza {pizzaNumber}</h1>
     ):(
-    <div className="headerCart">
-        <div className="btnCart-container">
-            <Button className="button cart" label='' onClick={() => setCartOpen(false)}/>
-        </div>
-        <h1>Pizzakalkylator</h1>
-    </div>) }
-    </>)
+        <>
+            <h1>Pizzakalkylator</h1>
+            <div className="btnCart-container">
+                <Button className="button cart" label='' onClick={() =>{onChangeOrderView(false),setCartOpen(true)}}/>
+            </div>
+            
+        </>
+       
+ ) }
+    </header>)
 };
     
 

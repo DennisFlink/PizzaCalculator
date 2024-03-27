@@ -4,10 +4,16 @@ import { PizzaContext } from './PizzaContext';
 import { ACTION } from './PizzaProvider';
 import uuid from 'react-uuid';
 
-const Footer = () => {
+type FooterProp = {
+   showOrderView: boolean
+   onChangeOrderView: (bool: boolean) => void;
+}
+
+const Footer = ({showOrderView,onChangeOrderView}:FooterProp) => {
     const {setCurrentPizza,dispatch,changeSize,editMode,changeEditMode} = useContext(PizzaContext);
+    const currentPizza = setCurrentPizza()
     const handleButtonClick = () => {
-        const currentPizza = setCurrentPizza()
+        
         if (!editMode.editMode) {
            dispatch({ type: ACTION.EDIT, payload: { ...currentPizza, done: true } })
            dispatch({ type: ACTION.ADD, payload: { id: uuid(), size: 'medium', sauce: [], cheese: [], toppings: [], totalCost: 100, done: false } })
@@ -19,23 +25,36 @@ const Footer = () => {
      }
 
     return (
-        <>    
-        { !editMode.editMode ? (/* <p> {pizzaPrice} </p> */
-        <div>
-            <p>belopp: 170kr</p>
+      <footer>
+         <section>     
+        { !editMode.editMode && showOrderView ? (/* <p> {pizzaPrice} </p> */
+            <>
+            <p>BELOPP</p>
+            <p className='price'>{Math.round(currentPizza.totalCost)} SEK</p>
             <Button className="button" onClick={()=> {handleButtonClick()}} label="Lägg till"></Button>
-        </div>
-     ): ( 
-            <div>
-            {/* <p>  {pizzaPrice} </p> */}
-            <p>belopp: 160kr</p>
-            <Button className="button" onClick={()=> changeEditMode(false,"")} label="Uppdatera"></Button>
-         </div>
-    
-        )}
-
+            </>
+     ):!showOrderView ? ( 
+      <>
+      {console.log("ska visa beställ")}
+            <p>BELOPP</p>
+            <p className='price'>{currentPizza.totalCost} SEK</p>
+            <Button className="button" onClick={()=> {onChangeOrderView(false), changeEditMode(false,"")}} label="Beställ"></Button>
+      </>
+        ):(
+         <>
+            <p>BELOPP</p>
+            <p className='price'>{currentPizza.totalCost} SEK</p>
+            <Button className="button" onClick={()=> {onChangeOrderView(false), changeEditMode(false,"")}} label="Uppdatera"></Button>
+            
+         </>
+        )
         
-        </>)
+        }
+        </section>
+      </footer>
+        
+        
+        )
     }
 
   export default Footer;

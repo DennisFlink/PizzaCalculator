@@ -5,7 +5,32 @@ h1 {
     font-size: 26px;
   }
 
-.headerDefault {
+  header{
+    display: flex;
+    justify-content: center;
+    padding: 2rem 1rem;
+    .headerDefault {
+      position: relative;
+      display: flex; 
+      justify-content: center; 
+      align-items: center; 
+      height: 80px; 
+    }
+    .btnCart-container{
+      position: absolute; 
+      right: 0;
+      align-self: center;
+  }
+    .btnChange-container{
+      position: absolute; 
+      left: 0;
+      align-self: center;
+    }
+  }
+
+
+
+/* .headerDefault {
     position: relative;
     display: flex; 
     justify-content: center; 
@@ -24,12 +49,5 @@ h1 {
     display: flex; 
     justify-content: center; 
     align-items: center; 
-    height: 80px; 
-  
-  
-    .btnCart-container{
-        position: absolute; 
-      top: 0; 
-      right: 0;
-    }
-  }
+    height: 80px;
+  } */

@@ -4,9 +4,11 @@ import { ACTION } from './PizzaProvider'
 
 type CartItemProps = {
    id: string
+   onChangeOrderView: (bool: boolean) => void;
+   
 }
 
-const CartItem: React.FC<CartItemProps> = ({ id }) => {
+const CartItem: React.FC<CartItemProps> = ({ id,onChangeOrderView }) => {
    const [isActive, setIsActive] = useState(false)
    const { changeEditMode, changeSize, state, dispatch } = useContext(PizzaContext)
    const [currentPizza] = state.pizzas.filter((p) => p.id === id)
@@ -21,7 +23,7 @@ const CartItem: React.FC<CartItemProps> = ({ id }) => {
                      src="./assets/edit.svg"
                      alt="a pen"
                      onClick={() => {
-                        changeEditMode(true, id), changeSize(currentPizza.size)
+                        changeEditMode(true, id), changeSize(currentPizza.size), onChangeOrderView(true)
                      }}
                   />
                   <div>

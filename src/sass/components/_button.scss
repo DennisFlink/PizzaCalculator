@@ -1,12 +1,14 @@
 @use '../abstracts/colors' as color;
 
-.button{
+
+  .button{
     width: 105px;
     height: 53px;
     background-color: color.$Primary;
     color: color.$Secondary;
     border-radius: 18px;
     border: none;
+    display: flex;
     justify-content: center; 
     align-items: center;
 
@@ -27,4 +29,7 @@
     
     }
 }
+
+
+
 

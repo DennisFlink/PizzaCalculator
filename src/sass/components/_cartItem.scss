@@ -2,7 +2,7 @@
 
   .accordion {
     margin: 0.5rem auto;
-   
+   padding: 1rem;
 
     .accordion-title {
         display: flex;
@@ -24,6 +24,7 @@
         ul {
             font-style: bold;
             margin-top: 1rem;
+            list-style: none;
         }
       }
       
