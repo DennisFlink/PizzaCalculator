@@ -12,13 +12,8 @@ const IngridientList: React.FC<PROP> = ({ type, category }) => {
    const { editMode, changeEditMode, changeSize, state, dispatch } = useContext(PizzaContext)
 
    const checkIfExists = (ingredientsName: string): boolean => {
-      let index: number
-      if (editMode.editMode) {
-         index = state.pizzas.findIndex((p) => p.id === editMode.id)
-      } else {
-         index = state.pizzas.length - 1
-      }
-      const currentPizza = state.pizzas[index]
+ 
+      const currentPizza = setCurrentPizza();
 
       return currentPizza.cheese.some((c) => c === ingredientsName) || currentPizza.sauce.some((s) => s === ingredientsName) || currentPizza.toppings.some((t) => t === ingredientsName)
    }

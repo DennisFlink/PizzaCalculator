@@ -80,6 +80,7 @@ export const PizzaContext = createContext<{
    changeSize: (size:string) => void,
    state: PizzaState
    dispatch: React.Dispatch<Action>
+   setCurrentPizza: () => Pizza
 }>({
    editMode: inititalEditModeState,
    changeEditMode: () => {},
@@ -87,4 +88,5 @@ export const PizzaContext = createContext<{
    changeSize: () => {},
    state: initialPizzaState,
    dispatch: () => null,
+   setCurrentPizza: () => initialPizzaState.pizzas[0]
 })
