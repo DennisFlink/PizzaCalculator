@@ -57,15 +57,7 @@ const PizzaProvider = ({ children }: PizzaProviderProps) => {
          id: id,
       })
    }
-   const setCurrentPizza = (): Pizza => {
-      let index: number
-      if (editMode.editMode) {
-         index = state.pizzas.findIndex((p) => p.id === editMode.id)
-      } else {
-         index = state.pizzas.length - 1
-      }
-      return state.pizzas[index]
-   }
+ 
    const setCurrentPizza = (): Pizza => {
       let index: number
       if (editMode.editMode) {

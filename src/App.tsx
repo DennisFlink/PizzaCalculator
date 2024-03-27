@@ -16,6 +16,7 @@ function App() {
          <IngredientsBox type="sauce" />
          <IngredientsBox type="cheese" />
          <IngredientsBox type="toppings" />
+         <CartView/>
          <Footer/>
       </PizzaProvider>
       </>

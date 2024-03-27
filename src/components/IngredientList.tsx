@@ -1,6 +1,5 @@
 import { useContext } from 'react'
 import { PizzaContext } from './PizzaContext'
-import { PizzaContext } from './PizzaContext'
 import { ACTION } from './PizzaProvider'
 
 type PROP = {
@@ -10,7 +9,7 @@ type PROP = {
 
 
 const IngredientList: React.FC<PROP> = ({ type, category }) => {
-   const { editMode, changeEditMode, changeSize, setCurrentPizza, dispatch } = useContext(PizzaContext)
+   const { setCurrentPizza, dispatch } = useContext(PizzaContext)
 
    const checkIfExists = (ingredientsName: string): boolean => {
  
@@ -28,19 +27,6 @@ const IngredientList: React.FC<PROP> = ({ type, category }) => {
          dispatch({ type: ACTION.EDIT, payload: { ...currentPizza, [category]: currentPizza[category].filter((category: string) => category !== ingredient.name) } })
       }
    }
-   const handleButtonClick = () => {
-      const currentPizza = setCurrentPizza()
-      console.log('currentpizza: ', currentPizza)
-      if (!editMode.editMode) {
-         dispatch({ type: ACTION.EDIT, payload: { ...currentPizza, done: true } })
-         dispatch({ type: ACTION.ADD, payload: { id: uuid(), size: 'medium', sauce: [], cheese: [], toppings: [], totalCost: 100, done: false } })
-         changeSize('medium')
-      } else {
-         dispatch({ type: ACTION.EDIT, payload: currentPizza })
-         changeEditMode(false, '')
-      }
-   }
-
   
 
    return (

@@ -9,11 +9,11 @@ const Header =() =>{
 
     return (
     <>
-    {!cartOpen ? (
+    {cartOpen ? (
     <div className="headerDefault">
         <h1> Pizzakalkylator</h1>;
             <div className="btnDefault-container">
-                <Button className="button close" label='' onClick={() => setCartOpen(true)} /> 
+                <Button className="button close" label='' onClick={() => setCartOpen(true)} />
             </div>
     </div>)
     :changeOrder ? ( 
