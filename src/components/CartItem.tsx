@@ -8,7 +8,7 @@ type CartItemProps = {
 
 const CartItem: React.FC<CartItemProps> = ({ id }) => {
    const [isActive, setIsActive] = useState(false)
-   const { changeEditMode, state, dispatch } = useContext(PizzaContext)
+   const { changeEditMode, changeSize, state, dispatch } = useContext(PizzaContext)
    const [currentPizza] = state.pizzas.filter((p) => p.id === id)
    const pizzaNumber = state.pizzas.findIndex((p) => p.id === id) + 1
    return (
@@ -17,7 +17,13 @@ const CartItem: React.FC<CartItemProps> = ({ id }) => {
             <div className="accordion-item">
                <div className="accordion-title">
                   <img src="./assets/close.svg" alt="a cross" onClick={() => dispatch({ type: ACTION.REMOVE, payload: currentPizza })} />
-                  <img src="./assets/edit.svg" alt="a pen" onClick={() => changeEditMode(true, id)} />
+                  <img
+                     src="./assets/edit.svg"
+                     alt="a pen"
+                     onClick={() => {
+                        changeEditMode(true, id), changeSize(currentPizza.size)
+                     }}
+                  />
                   <div>
                      Pizza: {pizzaNumber} : {currentPizza.size}
                   </div>
