@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 import '../sass/components/_orderView.scss'
 import { PizzaContext } from './PizzaContext'
 import { ACTION } from './PizzaProvider'
