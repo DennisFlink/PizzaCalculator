@@ -66,6 +66,15 @@ const PizzaProvider = ({ children }: PizzaProviderProps) => {
       }
       return state.pizzas[index]
    }
+   const setCurrentPizza = (): Pizza => {
+      let index: number
+      if (editMode.editMode) {
+         index = state.pizzas.findIndex((p) => p.id === editMode.id)
+      } else {
+         index = state.pizzas.length - 1
+      }
+      return state.pizzas[index]
+   }
    console.log(state)
    return <PizzaContext.Provider value={{ setCurrentPizza,editMode, changeEditMode, size, changeSize, state, dispatch }}>{children}</PizzaContext.Provider>
 }

@@ -18,6 +18,7 @@ export type Pizza = {
    cheese: string[],
    toppings: string[]
    totalCost: number,
+   // eslint-disable-next-line @typescript-eslint/no-explicit-any
    [key: string]: any
 }
 

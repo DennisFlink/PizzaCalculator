@@ -1,26 +1,18 @@
-import  { useState, useReducer } from 'react';
+import { ComponentPropsWithoutRef } from "react"
 
-const Button = () => {
- 
+interface ButtonProps extends ComponentPropsWithoutRef<'button'> {
+  label: string
+  onClick?: () => void
+}
 
+const Button: React.FC<ButtonProps> = ({ label, onClick, ...props }) => {
+  
   return (
-    <>
-   {cartOpen ?(
-    <div>
-    <button className= "buy">Beställ</button>
-    </div>
-   ): changeOrder ?(
-    <div>
-    <button className="update">Uppdatera</button>
-    </div>
-   ): 
-   <div>
-    <button className="add"> Lägg till</button> 
-    </div>
+     <button onClick={onClick} {...props}>
+        {label}
+     </button>
+  )
+}
 
-  }
-  </>
-  );
-};    
 
 export default Button;

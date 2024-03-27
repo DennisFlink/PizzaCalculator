@@ -1,12 +1,13 @@
 import { useContext } from 'react'
 import { PizzaContext } from './PizzaContext'
+import { PizzaContext } from './PizzaContext'
 import { ACTION } from './PizzaProvider'
-import uuid from 'react-uuid'
 
 type PROP = {
    type: { name: string }[]
    category: string
 }
+
 
 const IngredientList: React.FC<PROP> = ({ type, category }) => {
    const { editMode, changeEditMode, changeSize, setCurrentPizza, dispatch } = useContext(PizzaContext)
@@ -43,14 +44,13 @@ const IngredientList: React.FC<PROP> = ({ type, category }) => {
   
 
    return (
-      <div className="CONTAINER">
+      <div className="ingredient-list-container">
          {type.map((ingredient, index) => (
             <div className="box" key={index}>
                <input type="checkbox" checked={checkIfExists(ingredient.name)} id={ingredient.name} onChange={(e) => handleCheckboxChange(ingredient, e.target.checked)}></input>
                <label htmlFor={ingredient.name}>{ingredient.name}</label>
             </div>
          ))}
-         <button onClick={handleButtonClick}>Add Pizza</button>
       </div>
    )
 }
