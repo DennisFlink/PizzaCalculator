@@ -8,7 +8,7 @@ type PROP = {
    category: string
 }
 
-const IngridientList: React.FC<PROP> = ({ type, category }) => {
+const IngredientList: React.FC<PROP> = ({ type, category }) => {
    const { editMode, changeEditMode, changeSize, state, dispatch } = useContext(PizzaContext)
 
    const checkIfExists = (ingredientsName: string): boolean => {
@@ -68,4 +68,4 @@ const IngridientList: React.FC<PROP> = ({ type, category }) => {
    )
 }
 
-export default IngridientList
+export default IngredientList
