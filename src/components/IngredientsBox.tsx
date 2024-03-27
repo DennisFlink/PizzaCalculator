@@ -9,7 +9,7 @@ const IngredientsBox = ({ type }: IngredientsBoxProps) => {
    const ingredients = Ingredients
    let title = ''
    let price = ' '
-
+   console.log("Renderar ingredntbox")
    switch (type) {
       case 'sauce':
          title = 'SÖS'

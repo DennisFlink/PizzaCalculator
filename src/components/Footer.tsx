@@ -4,15 +4,10 @@ import { PizzaContext } from './PizzaContext';
 import { ACTION } from './PizzaProvider';
 import uuid from 'react-uuid';
 
-
 const Footer = () => {
-    const [cartOpen, setCartOpen] = useState(false);
-    console.log(cartOpen);
-    const [changeOrder, setChangeOrder] = useState(false);
     const {setCurrentPizza,dispatch,changeSize,editMode,changeEditMode} = useContext(PizzaContext);
     const handleButtonClick = () => {
         const currentPizza = setCurrentPizza()
-        console.log('currentpizza: ', currentPizza)
         if (!editMode.editMode) {
            dispatch({ type: ACTION.EDIT, payload: { ...currentPizza, done: true } })
            dispatch({ type: ACTION.ADD, payload: { id: uuid(), size: 'medium', sauce: [], cheese: [], toppings: [], totalCost: 100, done: false } })
@@ -24,8 +19,7 @@ const Footer = () => {
      }
 
     return (
-        <>
-        
+        <>    
         { !editMode.editMode ? (/* <p> {pizzaPrice} </p> */
         <div>
             <p>belopp: 170kr</p>

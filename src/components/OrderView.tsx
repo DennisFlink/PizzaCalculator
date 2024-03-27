@@ -1,59 +1,17 @@
-import { useContext } from 'react'
-import '../sass/components/_orderView.scss'
-import { PizzaContext } from './PizzaContext'
-import { ACTION } from './PizzaProvider'
+import React from "react"
+import PizzaSize from "./PizzaSize"
+import IngredientsBox from "./IngredientsBox";
+type OrderViewProps = {}
 
-const ACTIONS = {
-   SMALL: 'small',
-   MEDIUM: 'medium',
-   LARGE: 'large',
-}
-
-const OrderView = () => {
-   const { size, changeSize, dispatch, setCurrentPizza } = useContext(PizzaContext)
-   const handleSizeChange = (newSize: string) => {
-      const currentPizza = setCurrentPizza()
-      changeSize(newSize)
-      dispatch({ type: ACTION.EDIT, payload: { ...currentPizza, size: newSize } })
-   }
-
-   return (
-      <div className="pizza-size-selection">
-         <div className="size-select-container">
-            <p>100 sek</p>
-            <button
-               className={size === ACTIONS.SMALL ? 'current-size' + ' size-select-button' : ' size-select-button'}
-               onClick={() => {
-                  handleSizeChange(ACTIONS.SMALL)
-               }}
-            >
-               S
-            </button>
-         </div>
-         <div className="size-select-container">
-            <p>120 sek</p>
-            <button
-               className={size === ACTIONS.MEDIUM ? 'current-size' + ' size-select-button' : ' size-select-button'}
-               onClick={() => {
-                  handleSizeChange(ACTIONS.MEDIUM)
-               }}
-            >
-               M
-            </button>
-         </div>
-         <div className="size-select-container">
-            <p>150 sek</p>
-            <button
-               className={size === ACTIONS.LARGE ? 'current-size' + ' size-select-button' : ' size-select-button'}
-               onClick={() => {
-                  handleSizeChange(ACTIONS.LARGE)
-               }}
-            >
-               L
-            </button>
-         </div>
-      </div>
-   )
+const OrderView = ({}:OrderViewProps) => {
+    return (
+        <>
+           <PizzaSize/> 
+            <IngredientsBox type="sauce" />
+            <IngredientsBox type="cheese" />
+            <IngredientsBox type="toppings" />
+        </>
+    )
 }
 
 export default OrderView

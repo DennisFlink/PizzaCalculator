@@ -11,11 +11,8 @@ function App() {
       <>
 
       <PizzaProvider>
-         <Header/>
-         <OrderView />
-         <IngredientsBox type="sauce" />
-         <IngredientsBox type="cheese" />
-         <IngredientsBox type="toppings" />
+         <Header/> 
+         <OrderView/>
          <CartView/>
          <Footer/>
       </PizzaProvider>
