@@ -10,17 +10,10 @@ const ACTIONS = {
 }
 
 const OrderView = () => {
-   const { editMode, size, changeSize, state, dispatch } = useContext(PizzaContext)
-   /* const [activeButton, setActiveButton] = useState(state.pizzas[state.pizzas.length - 1].size) */
+   const { size, changeSize, dispatch, setCurrentPizza } = useContext(PizzaContext)
    const handleSizeChange = (newSize: string) => {
+      const currentPizza = setCurrentPizza()
       changeSize(newSize)
-      let index: number
-      if (editMode.editMode) {
-         index = state.pizzas.findIndex((p) => p.id === editMode.id)
-      } else {
-         index = state.pizzas.length - 1
-      }
-      const currentPizza = state.pizzas[index]
       dispatch({ type: ACTION.EDIT, payload: { ...currentPizza, size: newSize } })
    }
 
