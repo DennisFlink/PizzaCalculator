@@ -1,3 +1,5 @@
+@use '../abstracts/colors' as color;
+
 .ingredient-list-container {
    display: grid;
    grid-template-columns: repeat(auto-fill, minmax(6rem, 1fr));
@@ -9,7 +11,10 @@
    .box {
       display: flex;
       gap: 0.5rem;
+      accent-color: color.$Primary;
+
+      input:checked::after {
+         color: color.$Primary;
+      }
    }
-
 }
-

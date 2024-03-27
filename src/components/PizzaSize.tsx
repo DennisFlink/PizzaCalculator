@@ -13,13 +13,31 @@ const PizzaSize = () => {
    const handleSizeChange = (newSize: string) => {
       const currentPizza = setCurrentPizza()
       changeSize(newSize)
-      dispatch({ type: ACTION.EDIT, payload: { ...currentPizza, size: newSize } })
+
+      switch (newSize) {
+         case 'small':
+            if (currentPizza.size != 'small') {
+               dispatch({ type: ACTION.EDIT, payload: { ...currentPizza, size: newSize, totalCost: { sizeCost: 90, ingredientsCost: currentPizza.totalCost.ingredientsCost } } })
+            }
+            break
+
+         case 'medium':
+            if (currentPizza.size != 'medium') {
+               dispatch({ type: ACTION.EDIT, payload: { ...currentPizza, size: newSize, totalCost: { sizeCost: 100, ingredientsCost: currentPizza.totalCost.ingredientsCost } } })
+            }
+            break
+         case 'large':
+            if (currentPizza.size != 'large') {
+               dispatch({ type: ACTION.EDIT, payload: { ...currentPizza, size: newSize, totalCost: { sizeCost: 110, ingredientsCost: currentPizza.totalCost.ingredientsCost } } })
+            }
+            break
+      }
    }
 
    return (
       <div className="pizza-size-selection">
          <div className="size-select-container">
-            <p>100 sek</p>
+            <p>90 sek</p>
             <button
                className={size === ACTIONS.SMALL ? 'current-size' + ' size-select-button' : ' size-select-button'}
                onClick={() => {
@@ -30,7 +48,7 @@ const PizzaSize = () => {
             </button>
          </div>
          <div className="size-select-container">
-            <p>120 sek</p>
+            <p>100 sek</p>
             <button
                className={size === ACTIONS.MEDIUM ? 'current-size' + ' size-select-button' : ' size-select-button'}
                onClick={() => {
@@ -41,7 +59,7 @@ const PizzaSize = () => {
             </button>
          </div>
          <div className="size-select-container">
-            <p>150 sek</p>
+            <p>120 sek</p>
             <button
                className={size === ACTIONS.LARGE ? 'current-size' + ' size-select-button' : ' size-select-button'}
                onClick={() => {

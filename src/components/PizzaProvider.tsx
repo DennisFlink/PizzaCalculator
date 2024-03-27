@@ -6,6 +6,7 @@ export const ACTION = {
    ADD: 'ADD',
    REMOVE: 'REMOVE',
    EDIT: 'EDIT',
+   UPDATE_PRICE: 'UPDATE_PRICE',
 }
 
 export type Action = {
@@ -31,7 +32,16 @@ const pizzaReducer = (state: PizzaState, action: Action): PizzaState => {
          return {
             pizzas: state.pizzas.filter((p) => p.id != action.payload.id),
          }
-
+      case ACTION.UPDATE_PRICE:
+         return {
+            ...state,
+            pizzas: state.pizzas.map((pizza) => {
+               if (pizza.id === action.payload.id) {
+                  return action.payload
+               }
+               return pizza
+            }),
+         }
       default:
          throw new Error('Wrong with action type')
    }
@@ -57,7 +67,7 @@ const PizzaProvider = ({ children }: PizzaProviderProps) => {
          id: id,
       })
    }
- 
+
    const setCurrentPizza = (): Pizza => {
       let index: number
       if (editMode.editMode) {
@@ -68,7 +78,7 @@ const PizzaProvider = ({ children }: PizzaProviderProps) => {
       return state.pizzas[index]
    }
    console.log(state)
-   return <PizzaContext.Provider value={{ setCurrentPizza,editMode, changeEditMode, size, changeSize, state, dispatch }}>{children}</PizzaContext.Provider>
+   return <PizzaContext.Provider value={{ setCurrentPizza, editMode, changeEditMode, size, changeSize, state, dispatch }}>{children}</PizzaContext.Provider>
 }
 
 export default PizzaProvider

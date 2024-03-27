@@ -4,11 +4,10 @@ import { ACTION } from './PizzaProvider'
 
 type CartItemProps = {
    id: string
-   onChangeOrderView: (bool: boolean) => void;
-   
+   onChangeOrderView: (bool: boolean) => void
 }
 
-const CartItem: React.FC<CartItemProps> = ({ id,onChangeOrderView }) => {
+const CartItem: React.FC<CartItemProps> = ({ id, onChangeOrderView }) => {
    const [isActive, setIsActive] = useState(false)
    const { changeEditMode, changeSize, state, dispatch } = useContext(PizzaContext)
    const [currentPizza] = state.pizzas.filter((p) => p.id === id)
@@ -29,7 +28,7 @@ const CartItem: React.FC<CartItemProps> = ({ id,onChangeOrderView }) => {
                   <div>
                      Pizza: {pizzaNumber} : {currentPizza.size}
                   </div>
-                  <div>{currentPizza.totalCost} kr</div>
+                  <div>{currentPizza.totalCost.ingredientsCost + currentPizza.totalCost.sizeCost} kr</div>
                   <div>
                      {isActive ? (
                         <img className="accordion-inactive" onClick={() => setIsActive(!isActive)} src="./assets/arrow.svg" alt="arrow" />

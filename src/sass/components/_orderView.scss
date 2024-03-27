@@ -1,0 +1,8 @@
+@use '../abstracts/colors' as color;
+
+.order-view {
+   background-color: color.$BackgroundSecondary;
+   height: 66vh;
+   padding-top: 4rem;
+   margin-top: 2rem;
+}
