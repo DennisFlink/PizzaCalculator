@@ -40,22 +40,39 @@ const CartItem: React.FC<CartItemProps> = ({ id, onChangeOrderView }) => {
                {isActive && (
                   <div className="accordion-content">
                      <ul>
-                        Sås:
-                        {currentPizza.sauce.map((sauce, index) => (
-                           <li key={index}>{sauce}</li>
-                        ))}
+                        <li key="SÅS">
+                           <strong>SÅS</strong>
+                           <hr></hr>
+                           <ul>
+                              {currentPizza.sauce.map((sauce, index) => (
+                                 <li key={index}>{sauce}</li>
+                              ))}
+                           </ul>
+                        </li>
                      </ul>
+
                      <ul>
-                        Ost:
-                        {currentPizza.cheese.map((cheese, index) => (
-                           <li key={index}>{cheese}</li>
-                        ))}
+                        <li key="OST">
+                           <strong>OST</strong>
+                           <hr></hr>
+                           <ul>
+                              {currentPizza.cheese.map((cheese, index) => (
+                                 <li key={index}>{cheese}</li>
+                              ))}
+                           </ul>
+                        </li>
                      </ul>
+
                      <ul>
-                        Topping:
-                        {currentPizza.toppings.map((toppings, index) => (
-                           <li key={index}>{toppings}</li>
-                        ))}
+                        <li key="OST">
+                           <strong>TOPPINGS</strong>
+                           <hr></hr>
+                           <ul>
+                              {currentPizza.toppings.map((toppings, index) => (
+                                 <li key={index}>{toppings}</li>
+                              ))}
+                           </ul>
+                        </li>
                      </ul>
                   </div>
                )}

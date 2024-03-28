@@ -54,6 +54,8 @@ type PizzaProviderProps = {
 const PizzaProvider = ({ children }: PizzaProviderProps) => {
    const [state, dispatch] = useReducer(pizzaReducer, initialPizzaState)
    const [size, setSize] = useState('medium')
+   const [cartOpen, setCartOpen] = useState(false)
+
    const [editMode, setEditMode] = useState<EditModeType>({
       editMode: false,
       id: '',
@@ -67,7 +69,9 @@ const PizzaProvider = ({ children }: PizzaProviderProps) => {
          id: id,
       })
    }
-
+   const changeCartOpen = (bool: boolean) => {
+      setCartOpen(bool)
+   }
    const setCurrentPizza = (): Pizza => {
       let index: number
       if (editMode.editMode) {
@@ -78,7 +82,7 @@ const PizzaProvider = ({ children }: PizzaProviderProps) => {
       return state.pizzas[index]
    }
    console.log(state)
-   return <PizzaContext.Provider value={{ setCurrentPizza, editMode, changeEditMode, size, changeSize, state, dispatch }}>{children}</PizzaContext.Provider>
+   return <PizzaContext.Provider value={{ setCurrentPizza, editMode, changeEditMode, size, changeSize, state, dispatch, changeCartOpen, cartOpen }}>{children}</PizzaContext.Provider>
 }
 
 export default PizzaProvider

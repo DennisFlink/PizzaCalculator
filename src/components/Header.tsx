@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 import Button from './Button'
 import { PizzaContext } from './PizzaContext'
 type HeaderProp = {
@@ -6,9 +6,9 @@ type HeaderProp = {
 }
 
 const Header = ({ onChangeOrderView }: HeaderProp) => {
-   const [cartOpen, setCartOpen] = useState(false)
-   console.log(cartOpen)
-   const { state, editMode } = useContext(PizzaContext)
+   /*    const [cartOpen, setCartOpen] = useState(false) */
+
+   const { state, editMode, changeCartOpen, cartOpen } = useContext(PizzaContext)
 
    const pizzaNumber = state.pizzas.findIndex((p) => p.id === editMode.id) + 1
 
@@ -21,7 +21,7 @@ const Header = ({ onChangeOrderView }: HeaderProp) => {
                      className="button close"
                      label=""
                      onClick={() => {
-                        onChangeOrderView(true), setCartOpen(false)
+                        onChangeOrderView(true), changeCartOpen(false)
                      }}
                   />
                </div>
@@ -37,7 +37,7 @@ const Header = ({ onChangeOrderView }: HeaderProp) => {
                      className="button cart"
                      label=""
                      onClick={() => {
-                        onChangeOrderView(false), setCartOpen(true)
+                        onChangeOrderView(false), changeCartOpen(true)
                      }}
                   />
                   {state.pizzas.length - 1 > 0 ? <div className="number-of-cart-items">{state.pizzas.length - 1}</div> : null}

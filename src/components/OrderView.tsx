@@ -1,9 +1,7 @@
-import React from 'react'
 import PizzaSize from './PizzaSize'
 import IngredientsBox from './IngredientsBox'
-type OrderViewProps = {}
 
-const OrderView = ({}: OrderViewProps) => {
+const OrderView = () => {
    return (
       <>
          <PizzaSize />

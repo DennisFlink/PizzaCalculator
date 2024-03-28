@@ -106,6 +106,8 @@ export const PizzaContext = createContext<{
    state: PizzaState
    dispatch: React.Dispatch<Action>
    setCurrentPizza: () => Pizza
+   changeCartOpen: (bool: boolean) => void
+   cartOpen: boolean
 }>({
    editMode: inititalEditModeState,
    changeEditMode: () => {},
@@ -114,4 +116,6 @@ export const PizzaContext = createContext<{
    state: initialPizzaState,
    dispatch: () => null,
    setCurrentPizza: () => initialPizzaState.pizzas[0],
+   changeCartOpen: () => {},
+   cartOpen: false,
 })

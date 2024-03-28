@@ -28,7 +28,7 @@ const PizzaSize = () => {
             break
          case 'large':
             if (currentPizza.size != 'large') {
-               dispatch({ type: ACTION.EDIT, payload: { ...currentPizza, size: newSize, totalCost: { sizeCost: 110, ingredientsCost: currentPizza.totalCost.ingredientsCost } } })
+               dispatch({ type: ACTION.EDIT, payload: { ...currentPizza, size: newSize, totalCost: { sizeCost: 120, ingredientsCost: currentPizza.totalCost.ingredientsCost } } })
             }
             break
       }
