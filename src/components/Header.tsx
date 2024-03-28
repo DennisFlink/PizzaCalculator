@@ -6,7 +6,6 @@ type HeaderProp = {
 }
 
 const Header = ({ onChangeOrderView }: HeaderProp) => {
-   /*    const [cartOpen, setCartOpen] = useState(false) */
 
    const { state, editMode, changeCartOpen, cartOpen } = useContext(PizzaContext)
 

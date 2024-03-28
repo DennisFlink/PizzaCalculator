@@ -35,7 +35,6 @@ const IngredientsBox = ({ type }: IngredientsBoxProps) => {
          </section>
          <section className="accordian">
             <hr />
-            {/* rotate arrow */}
             {!isActive ? (
                <img className="accordian-inactive" onClick={() => setIsActive(!isActive)} src="src/assets/arrow.svg" alt="arrow" />
             ) : (

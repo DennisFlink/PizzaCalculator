@@ -2,14 +2,6 @@ import { createContext } from 'react'
 import { Action } from './PizzaProvider'
 import uuid from 'react-uuid'
 
-/* type Ingredients = {
-   sauce: { name: string }[]
-   sacuePrice: number
-   cheese: { name: string }[]
-   cheesePrice: number
-   toppings: { name: string }[]
-   toppingsPrice: number
-} */
 
 export type Pizza = {
    id: string
@@ -21,7 +13,6 @@ export type Pizza = {
       sizeCost: number
       ingredientsCost: number
    }
-
    // eslint-disable-next-line @typescript-eslint/no-explicit-any
    [key: string]: any
 }

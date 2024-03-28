@@ -54,7 +54,7 @@ const Footer = ({ showOrderView, onChangeOrderView }: FooterProp) => {
    return (
       <footer>
          <section>
-            {!editMode.editMode && showOrderView /* <p> {pizzaPrice} </p> */ ? (
+            {!editMode.editMode && showOrderView  ? (
                <>
                   <p>BELOPP</p>
                   <p className="price">{currentPizza.totalCost.ingredientsCost + currentPizza.totalCost.sizeCost} SEK</p>
