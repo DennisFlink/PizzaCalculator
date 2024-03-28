@@ -1,0 +1,42 @@
+@use '../abstracts/colors' as colors;
+
+.accordion {
+   margin: 0.5rem auto;
+   padding: 1rem;
+
+   .accordion-title {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 5rem;
+      background-color: colors.$Primary;
+   }
+
+   .accordion-title,
+   .accordion-content {
+      padding: 1rem;
+   }
+
+   .accordion-content {
+      background-color: colors.$BackgroundSecondary;
+      box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.32);
+
+      ul {
+         font-style: bold;
+         margin-top: 5px;
+         list-style: none;
+      }
+      hr {
+         background-color: black;
+         width: 50%;
+         margin: auto;
+         height: 1.5px;
+         border: none;
+      }
+   }
+
+   .accordion-active {
+      transform: rotate(180deg);
+   }
+}

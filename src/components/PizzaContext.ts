@@ -1,17 +1,42 @@
 import { createContext } from 'react'
+import { Action } from './PizzaProvider'
+import uuid from 'react-uuid'
 
-type Ingredients = {
-   sauce: { name: string; price: number }[]
+/* type Ingredients = {
+   sauce: { name: string }[]
+   sacuePrice: number
+   cheese: { name: string }[]
+   cheesePrice: number
+   toppings: { name: string }[]
+   toppingsPrice: number
+} */
 
-   cheese: { name: string; price: number }[]
+export type Pizza = {
+   id: string
+   size: string
+   sauce: string[]
+   cheese: string[]
+   toppings: string[]
+   totalCost: {
+      sizeCost: number
+      ingredientsCost: number
+   }
 
-   toppings: { name: string; price: number }[]
+   // eslint-disable-next-line @typescript-eslint/no-explicit-any
+   [key: string]: any
 }
 
-type Pizza = {
-   size: string
-   Ingridients: Ingredients
-   totalCost: number
+export type EditModeType = {
+   editMode: boolean
+   id: string
+}
+type Ingredients = {
+   sauce: { name: string; price: number }[]
+   sacuePrice: number
+   cheese: { name: string; price: number }[]
+   cheesePrice: number
+   toppings: { name: string; price: number }[]
+   toppingsPrice: number
 }
 
 export const Ingredients: Ingredients = {
@@ -21,6 +46,7 @@ export const Ingredients: Ingredients = {
       { name: 'Créme fraiche', price: 10 },
       { name: 'Bechamele', price: 10 },
    ],
+   sacuePrice: 10,
    cheese: [
       { name: 'Mozarella', price: 15 },
       { name: 'Parmesan', price: 15 },
@@ -30,6 +56,7 @@ export const Ingredients: Ingredients = {
       { name: 'Cheddar', price: 15 },
       { name: 'Pepperjack', price: 15 },
    ],
+   cheesePrice: 15,
 
    toppings: [
       { name: 'Skinka', price: 20 },
@@ -45,7 +72,6 @@ export const Ingredients: Ingredients = {
       { name: 'Sallad', price: 20 },
       { name: 'Gurka', price: 20 },
       { name: 'Pommes', price: 20 },
-      { name: 'Rödlök', price: 20 },
       { name: 'Curry', price: 20 },
       { name: 'Banan', price: 20 },
       { name: 'Salami', price: 20 },
@@ -56,8 +82,40 @@ export const Ingredients: Ingredients = {
       { name: 'Lök', price: 20 },
       { name: 'Rödlök', price: 20 },
    ],
+   toppingsPrice: 20,
 }
 
-export const initialPizzaState: Pizza[] = []
+const inititalEditModeState: EditModeType = {
+   editMode: false,
+   id: '',
+}
 
-export const PizzaContext = createContext([] as Pizza[])
+export type PizzaState = {
+   pizzas: Pizza[]
+}
+
+export const initialPizzaState: PizzaState = {
+   pizzas: [{ id: uuid(), size: 'medium', sauce: [], cheese: [], toppings: [], totalCost: { sizeCost: 100, ingredientsCost: 0 }, done: false }],
+}
+
+export const PizzaContext = createContext<{
+   editMode: EditModeType
+   changeEditMode: (editMode: boolean, id: string) => void
+   size: string
+   changeSize: (size: string) => void
+   state: PizzaState
+   dispatch: React.Dispatch<Action>
+   setCurrentPizza: () => Pizza
+   changeCartOpen: (bool: boolean) => void
+   cartOpen: boolean
+}>({
+   editMode: inititalEditModeState,
+   changeEditMode: () => {},
+   size: 'medium',
+   changeSize: () => {},
+   state: initialPizzaState,
+   dispatch: () => null,
+   setCurrentPizza: () => initialPizzaState.pizzas[0],
+   changeCartOpen: () => {},
+   cartOpen: false,
+})
