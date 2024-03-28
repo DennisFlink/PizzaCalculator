@@ -81,7 +81,6 @@ const PizzaProvider = ({ children }: PizzaProviderProps) => {
       }
       return state.pizzas[index]
    }
-   console.log(state)
    return <PizzaContext.Provider value={{ setCurrentPizza, editMode, changeEditMode, size, changeSize, state, dispatch, changeCartOpen, cartOpen }}>{children}</PizzaContext.Provider>
 }
 

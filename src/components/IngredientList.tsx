@@ -18,7 +18,6 @@ const IngredientList: React.FC<PROP> = ({ type, category }) => {
 
    const handleCheckboxChange = (ingredient: { name: string; price: number }, isChecked: boolean) => {
       let currentPrice: number = currentPizza.totalCost.ingredientsCost
-      console.log(ingredient.price)
       if (isChecked) {
          currentPrice += ingredient.price
          dispatch({

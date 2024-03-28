@@ -69,7 +69,6 @@ const Footer = ({ showOrderView, onChangeOrderView }: FooterProp) => {
                </>
             ) : !showOrderView ? (
                <>
-                  {console.log('ska visa beställ')}
                   <p>BELOPP</p>
                   <p className="price">{cartTotal} SEK</p>
                   <Button
