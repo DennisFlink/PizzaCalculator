@@ -4,7 +4,7 @@
 - Anton Håkansson
 - Dennis Flinkfeldt
 - Sebastian Högsander
-- GustaF Syrén 
+- Gustav Syrén 
 
 ---
 ### Description: 
